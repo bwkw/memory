@@ -8,9 +8,11 @@ import Icon from '@mui/material/Icon';
 function Create(){
     return (
         <div>
-            <Button variant="outlined" endIcon={<Icon>add_circle</Icon>} onclick="handelCreate">
-                Create
-            </Button>
+            <a href="/scenery/create">
+                <Button variant="outlined" endIcon={<Icon>add_circle</Icon>}>
+                    Create
+                </Button>
+            </a>
         </div>
     );
 }
