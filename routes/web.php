@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SceneryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', [SceneryController::class, 'index'])->name('index');
+
+Route::get('/datas', [SceneryController::class, 'getdatas'])->name('datas');
