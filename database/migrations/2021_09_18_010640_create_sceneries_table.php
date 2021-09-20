@@ -15,6 +15,11 @@ class CreateSceneriesTable extends Migration
     {
         Schema::create('sceneries', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 20);
+            $table->string('prefectures',20);
+            $table->string('municipalities', 20);
+            $table->string('Chome address', 20);
+            $table->string('img_path')->nullable();
             $table->timestamps();
         });
     }
