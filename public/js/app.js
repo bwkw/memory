@@ -10674,13 +10674,15 @@ __webpack_require__.r(__webpack_exports__);
 
 function Create() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_4__.default, {
-      variant: "outlined",
-      endIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_Icon__WEBPACK_IMPORTED_MODULE_5__.default, {
-        children: "add_circle"
-      }),
-      onclick: "handelCreate",
-      children: "Create"
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+      href: "/scenery/create",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_4__.default, {
+        variant: "outlined",
+        endIcon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_Icon__WEBPACK_IMPORTED_MODULE_5__.default, {
+          children: "add_circle"
+        }),
+        children: "Create"
+      })
     })
   });
 }

@@ -12,10 +12,8 @@ class SceneryController extends Controller
         return response()->json([$scenery]);
     }
     
-    public function index(Scenery $scenery)
+    public function create()
     {
-        return view('index');
+        return view('Scenery.create');
     }
-    
-    
 }
