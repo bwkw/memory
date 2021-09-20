@@ -10522,6 +10522,14 @@ __webpack_require__(/*! ./components/Index */ "./resources/js/components/Index.j
 
 __webpack_require__(/*! ./components/create */ "./resources/js/components/create.js");
 
+__webpack_require__(/*! ./components/Form/AllForm */ "./resources/js/components/Form/AllForm.js");
+
+__webpack_require__(/*! ./components/Form/basic */ "./resources/js/components/Form/basic.js");
+
+__webpack_require__(/*! ./components/Form/confirm */ "./resources/js/components/Form/confirm.js");
+
+__webpack_require__(/*! ./components/Form/optional */ "./resources/js/components/Form/optional.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -10614,6 +10622,92 @@ function Example() {
 if (document.getElementById('example')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Example, {}), document.getElementById('example'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/Form/AllForm.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/Form/AllForm.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _basic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./basic */ "./resources/js/components/Form/basic.js");
+/* harmony import */ var _basic__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_basic__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _optional__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./optional */ "./resources/js/components/Form/optional.js");
+/* harmony import */ var _optional__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_optional__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _confirm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./confirm */ "./resources/js/components/Form/confirm.js");
+/* harmony import */ var _confirm__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_confirm__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+function getSteps() {
+  return ['必須項目', '任意項目', '入力確認'];
+}
+
+function getStepContent(stepIndex) {
+  switch (stepIndex) {
+    case 0:
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)((_basic__WEBPACK_IMPORTED_MODULE_3___default()), {
+        handleNext: handleNext
+      });
+
+    case 1:
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)((_optional__WEBPACK_IMPORTED_MODULE_4___default()), {
+        handleNext: handleNext,
+        handleBack: handleBack
+      });
+
+    case 2:
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)((_confirm__WEBPACK_IMPORTED_MODULE_5___default()), {
+        handleBack: handleBack
+      });
+
+    default:
+      return 'Unknown stepIndex';
+  }
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Form/basic.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/Form/basic.js ***!
+  \***********************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Form/confirm.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/Form/confirm.js ***!
+  \*************************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Form/optional.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Form/optional.js ***!
+  \**************************************************/
+/***/ (() => {
+
+
 
 /***/ }),
 
