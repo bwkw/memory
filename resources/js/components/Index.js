@@ -6,7 +6,7 @@ import Create from './create';
 function Index() {
     return (
         <div>
-            <Create/>
+            <Create />
         </div>
     );
 }

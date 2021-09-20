@@ -5,7 +5,7 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import Icon from '@mui/material/Icon';
 
-function Create(){
+function Create() {
     return (
         <div>
             <a href="/scenery/create">
