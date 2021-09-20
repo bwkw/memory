@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SceneryController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,18 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/', [SceneryController::class, 'index'])->name('index');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/datas', [SceneryController::class, 'getdatas'])->name('datas');
+
+Route::get('/scenery/create', [SceneryController::class, 'create'])->name('create');
