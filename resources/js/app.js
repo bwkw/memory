@@ -17,3 +17,9 @@ require('./components/Example');
 require('./components/Index');
 
 require('./components/create');
+
+require('./components/Form/AllForm');
+require('./components/Form/basic');
+require('./components/Form/confirm');
+require('./components/Form/optional');
+
