@@ -13,7 +13,7 @@ require('./bootstrap');
  */
 
 require('./components/Example');
-
+require('./components/Category/Category');
 require('./components/Index');
 
 require('./components/create');
