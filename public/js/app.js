@@ -27241,19 +27241,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var itemData = [{
+  img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travel.jpeg',
+  title: 'Travel'
+}, {
+  img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/food.jpeg',
+  title: 'Food'
+}, {
+  img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/scenery.jpeg',
+  title: 'Scenery'
+}, {
+  img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/dating.jpeg',
+  title: 'Dating'
+}];
 function Category(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_ImageList__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    sx: {
-      width: 500,
-      height: 450
+    xs: {
+      width: 1200,
+      height: 800
     },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material_ImageListItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-        src: "https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travel.jpeg",
-        alt: "Travel"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_ImageListItemBar__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        title: "Travel"
-      })]
+    children: itemData.map(function (item) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_mui_material_ImageListItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+          src: item.img,
+          alt: item.title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material_ImageListItemBar__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          title: item.title
+        })]
+      });
     })
   });
 }
