@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Create from './create';
+import Category from './Category/Category';
 
 function Index() {
     return (
         <div>
-            <Create />
+            <Category />
         </div>
     );
 }
