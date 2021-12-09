@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 
 const images = [
     {
-<<<<<<< HEAD
       url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travel.jpeg',
       title: 'Travel',
       width: '100%',
@@ -29,22 +28,6 @@ const images = [
       url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/dating.png',
       title: 'Dating',
       width: '100%',
-=======
-      img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travel.jpeg',
-      title: 'Travel',
-    },
-    {
-      img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/food.jpeg',
-      title: 'Food',
-    },
-    {
-      img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/scenery.jpeg',
-      title: 'Scenery',
-    },
-    {
-      img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/dating.png',
-      title: 'Dating',
->>>>>>> 7f3150e5a754cc9170625e59bc6ca4addaf9cc5e
     },
 ]
 
@@ -110,7 +93,6 @@ const ImageMarked = styled('span')(({ theme }) => ({
 
 export default function Category() {
   return (
-
     <Grid container rowSpacing={2} columnSpacing={4} justifyContent="center">
       {images.map((image) => (
       <Grid item xs={8} md={5}>
