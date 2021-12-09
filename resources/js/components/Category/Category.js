@@ -1,48 +1,131 @@
-import axios from 'axios';
-import Grid from '@mui/material/Grid';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { styled } from '@mui/material/styles';
+import axios from 'axios';
+import Box from '@mui/material/Box';
+import ButtonBase from '@mui/material/ButtonBase';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
-const itemData = [
+
+const images = [
     {
-        img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travel.jpeg',
-        title: 'Travel',
+      url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travel.jpeg',
+      title: 'Travel',
+      width: '40%',
     },
     {
-        img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/food.jpeg',
-        title: 'Food',
+      url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/food.jpeg',
+      title: 'Food',
+      width: '40%',
     },
     {
-        img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/scenery.jpeg',
-        title: 'Scenery',
+      url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/scenery.jpeg',
+      title: 'Scenery',
+      width: '40%',
     },
     {
-        img: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/dating.png',
-        title: 'Dating',
+      url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/dating.png',
+      title: 'Dating',
+      width: '40%',
     },
 ]
 
+const ImageButton = styled(ButtonBase)(({ theme }) => ({
+  position: 'relative',
+  height: 200,
+  [theme.breakpoints.down('sm')]: {
+    width: '100% !important', // Overrides inline-style
+    height: 100,
+  },
+  '&:hover, &.Mui-focusVisible': {
+    zIndex: 1,
+    '& .MuiImageBackdrop-root': {
+      opacity: 0.15,
+    },
+    '& .MuiImageMarked-root': {
+      opacity: 0,
+    },
+    '& .MuiTypography-root': {
+      border: '4px solid currentColor',
+    },
+  },
+}));
+
+const ImageSrc = styled('span')({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center 40%',
+});
+
+const Image = styled('span')(({ theme }) => ({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: theme.palette.common.white,
+}));
+
+const ImageBackdrop = styled('span')(({ theme }) => ({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundColor: theme.palette.common.black,
+  opacity: 0.4,
+  transition: theme.transitions.create('opacity'),
+}));
+
+const ImageMarked = styled('span')(({ theme }) => ({
+  height: 3,
+  width: 18,
+  backgroundColor: theme.palette.common.white,
+  position: 'absolute',
+  bottom: -2,
+  left: 'calc(50% - 9px)',
+  transition: theme.transitions.create('opacity'),
+}));
+
 export default function Category() {
-    return (
-        <Grid container rowSpacing={3} columnSpacing={2} justifyContent="center">
-            {itemData.map((item) => (
-                <Grid item xs={5}>
-                    <ImageListItem>
-                        <img
-                            src={item.img}
-                            alt={item.title}
-                        />
-                        <ImageListItemBar
-                            title={item.title}
-                        />
-                    </ImageListItem>
-                </Grid>
-             ))}
-        </Grid>
-        
-    );
+  return (
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+      {images.map((image) => (
+        <ImageButton
+          focusRipple
+          key={image.title}
+          style={{
+            width: image.width,
+          }}
+        >
+          <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+          <ImageBackdrop className="MuiImageBackdrop-root" />
+          <Image>
+            <Typography
+              component="span"
+              variant="subtitle1"
+              color="inherit"
+              sx={{
+                position: 'relative',
+                p: 4,
+                pt: 2,
+                pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+              }}
+            >
+              {image.title}
+              <ImageMarked className="MuiImageMarked-root" />
+            </Typography>
+          </Image>
+        </ImageButton>
+      ))}
+    </Box>
+  );
 }
