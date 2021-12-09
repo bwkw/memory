@@ -12,32 +12,28 @@ const images = [
     {
       url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travel.jpeg',
       title: 'Travel',
-      width: '40%',
+      width: '100%',
     },
     {
       url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/food.jpeg',
       title: 'Food',
-      width: '40%',
+      width: '100%',
     },
     {
       url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/scenery.jpeg',
       title: 'Scenery',
-      width: '40%',
+      width: '100%',
     },
     {
       url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/dating.png',
       title: 'Dating',
-      width: '40%',
+      width: '100%',
     },
 ]
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
-  height: 200,
-  [theme.breakpoints.down('sm')]: {
-    width: '100% !important', // Overrides inline-style
-    height: 100,
-  },
+  height: 300,
   '&:hover, &.Mui-focusVisible': {
     zIndex: 1,
     '& .MuiImageBackdrop-root': {
@@ -97,8 +93,9 @@ const ImageMarked = styled('span')(({ theme }) => ({
 
 export default function Category() {
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+    <Grid container rowSpacing={2} columnSpacing={4} justifyContent="center">
       {images.map((image) => (
+      <Grid item xs={8} md={5}>
         <ImageButton
           focusRipple
           key={image.title}
@@ -125,7 +122,8 @@ export default function Category() {
             </Typography>
           </Image>
         </ImageButton>
+      </Grid>
       ))}
-    </Box>
+    </Grid>
   );
 }
