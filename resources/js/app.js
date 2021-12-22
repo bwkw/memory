@@ -12,7 +12,8 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example');
+require('./components/Card/BaseCard');
+require('./components/Card/SwitchCard');
 require('./components/Category/Category');
 require('./components/Index');
 
