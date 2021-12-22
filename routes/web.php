@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\SceneryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TravelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +19,4 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::get('/datas', [SceneryController::class, 'getdatas'])->name('datas');
-
-Route::get('/scenery/create', [SceneryController::class, 'create'])->name('create');
+Route::get('/travel', [TravelController::class, 'index'])->name('datas');
