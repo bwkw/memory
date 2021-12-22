@@ -1,33 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { styled } from '@mui/material/styles';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 
 
-const images = [
+const items = [
     {
-      url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travel.jpeg',
-      title: 'Travel',
-      width: '100%',
+      img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travel.jpeg',
+      img_title: 'Travel',
+      img_width: '100%',
+      onclick_url: '/travel'
     },
     {
-      url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/food.jpeg',
-      title: 'Food',
-      width: '100%',
+      img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/food.jpeg',
+      img_title: 'Food',
+      img_width: '100%',
+      onclick_url: '/food'
     },
     {
-      url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/scenery.jpeg',
-      title: 'Scenery',
-      width: '100%',
+      img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/scenery.jpeg',
+      img_title: 'Scenery',
+      img_width: '100%',
+      onclick_url: '/scenery'
     },
     {
-      url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/dating.png',
-      title: 'Dating',
-      width: '100%',
+      img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/dating.png',
+      img_title: 'Dating',
+      img_width: '100%',
+      onclick_url: '/dating'
     },
 ]
 
@@ -94,16 +98,17 @@ const ImageMarked = styled('span')(({ theme }) => ({
 export default function Category() {
   return (
     <Grid container rowSpacing={2} columnSpacing={4} justifyContent="center">
-      {images.map((image) => (
+      {items.map((item) => (
       <Grid item xs={8} md={5}>
         <ImageButton
           focusRipple
-          key={image.title}
+          key={item.img_title}
           style={{
-            width: image.width,
+            width: item.img_width,
           }}
+          href={item.onclick_url}
         >
-          <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+          <ImageSrc style={{ backgroundImage: `url(${item.img_url})` }} />
           <ImageBackdrop className="MuiImageBackdrop-root" />
           <Image>
             <Typography
@@ -117,7 +122,7 @@ export default function Category() {
                 pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
               }}
             >
-              {image.title}
+              {item.img_title}
               <ImageMarked className="MuiImageMarked-root" />
             </Typography>
           </Image>

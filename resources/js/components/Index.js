@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Category from './Category/Category';
 
-function Index() {
+function HomeIndex() {
     return (
         <div>
             <Category />
@@ -12,5 +12,5 @@ function Index() {
 }
 
 ReactDOM.render(
-    <Index/>, document.getElementById('index')
+    <HomeIndex/>, document.getElementById('home_index')
 );
