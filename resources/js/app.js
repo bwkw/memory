@@ -15,7 +15,7 @@ require('./bootstrap');
 require('./components/Card/BaseCard');
 require('./components/Card/SwitchCard');
 require('./components/Category/Category');
-require('./components/Index');
+require('./components/HomeIndex');
 
 require('./components/create');
 
