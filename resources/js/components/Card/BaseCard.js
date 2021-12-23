@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -12,7 +11,7 @@ import { styled } from '@mui/material/styles';
 export default function BaseCard(props) {
   return (
     <div>
-      {props.array.map((item) => (
+      {props.items.map((item) => (
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
