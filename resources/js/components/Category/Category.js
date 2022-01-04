@@ -10,19 +10,19 @@ import { styled } from '@mui/material/styles';
 
 const items = [
     {
-      img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travel.jpeg',
+      img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travels/travel.jpeg',
       img_title: 'Travel',
       img_width: '100%',
       onclick_url: '/travel'
     },
     {
-      img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/food.jpeg',
+      img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/foods/food.jpeg',
       img_title: 'Food',
       img_width: '100%',
       onclick_url: '/food'
     },
     {
-      img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/scenery.jpeg',
+      img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/sceneries/scenery.jpeg',
       img_title: 'Scenery',
       img_width: '100%',
       onclick_url: '/scenery'
