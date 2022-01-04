@@ -12648,7 +12648,7 @@ var items = [{
   img_width: '100%',
   onclick_url: '/scenery'
 }, {
-  img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/dating.png',
+  img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/datings/dating.png',
   img_title: 'Dating',
   img_width: '100%',
   onclick_url: '/dating'
