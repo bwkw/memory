@@ -5,26 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Travel;
 use Illuminate\Http\Request;
 
-class TravelController extends Controller
+class ApiTravelController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Travel $travel)
+    public function index()
     {
-        return view('Travel/index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $travels = Travel::all();
+        return response()->json($travels, 200);
     }
 
     /**
@@ -41,21 +32,10 @@ class TravelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Travel  $travel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Travel $travel)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Travel  $travel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Travel $travel)
+    public function show($id)
     {
         //
     }
@@ -64,10 +44,10 @@ class TravelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Travel  $travel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Travel $travel)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +55,10 @@ class TravelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Travel  $travel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Travel $travel)
+    public function destroy($id)
     {
         //
     }
