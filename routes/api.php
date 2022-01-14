@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TravelController;
+use App\Http\Controllers\ApiTravelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'api'], function(){
-    Route::get('/travel', [TravelController::class, 'index_api'])->name('index_api');
+    Route::get('/travels', [ApiTravelController::class, 'index'])->name('api_travel_index');
 });
