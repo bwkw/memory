@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::get('/travel', [TravelController::class, 'index'])->name('datas');
+Route::get('/travels', [TravelController::class, 'index'])->name('travel_index');
