@@ -12636,22 +12636,22 @@ var items = [{
   img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/travels/travel.jpeg',
   img_title: 'Travel',
   img_width: '100%',
-  onclick_url: '/travel'
+  onclick_url: '/travels'
 }, {
   img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/foods/food.jpeg',
   img_title: 'Food',
   img_width: '100%',
-  onclick_url: '/food'
+  onclick_url: '/foods'
 }, {
   img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/sceneries/scenery.jpeg',
   img_title: 'Scenery',
   img_width: '100%',
-  onclick_url: '/scenery'
+  onclick_url: '/sceneries'
 }, {
   img_url: 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/top-page/datings/dating.png',
   img_title: 'Dating',
   img_width: '100%',
-  onclick_url: '/dating'
+  onclick_url: '/datings'
 }];
 var ImageButton = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_4__["default"])(_mui_material_ButtonBase__WEBPACK_IMPORTED_MODULE_5__["default"])(function (_ref) {
   var theme = _ref.theme;
