@@ -16,6 +16,8 @@ require('./components/Card/BaseCard');
 require('./components/Card/SwitchCard');
 require('./components/Category/Category');
 require('./components/HomeIndex');
+require('./components/GoogleMap/Map');
+require('./theme');
 
 require('./components/create');
 
