@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <div id="index_card"></div>
+    <div id="index"></div>
 
 @endsection
