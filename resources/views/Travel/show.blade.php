@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <div id="test"></div>
+    <div id="test" data-id='{{ $travel->id }}'></div>
 
 @endsection
