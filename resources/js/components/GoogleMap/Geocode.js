@@ -12,7 +12,6 @@ function GetGeocodeName() {
         .get("/api/travels/" + id)
 	    .then(response => {
 	      setName(response.data.name);
-          console.log(response.data);　
 	    })
         .catch(() => {
 	      console.log('通信に失敗しました');
