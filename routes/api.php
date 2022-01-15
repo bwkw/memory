@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'api'], function(){
     Route::get('/travels', [ApiTravelController::class, 'index'])->name('api_travel_index');
+    Route::get('/travels/{travel}', [ApiTravelController::class, 'show'])->name('api_travel_show');
 });
