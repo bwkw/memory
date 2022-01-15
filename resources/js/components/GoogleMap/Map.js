@@ -16,8 +16,7 @@ export const Map = () => {
     lat: lat,
     lng: lng,
   }
-  
-  console.log(center);
+
   return (
     <LoadScript googleMapsApiKey={process.env.MIX_GOOGLE_MAP_API_KEY}>
       <GoogleMap
