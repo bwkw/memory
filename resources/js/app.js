@@ -15,11 +15,10 @@ require('./bootstrap');
 require('./components/Card/BaseCard');
 require('./components/Card/SwitchCard');
 require('./components/Category/Category');
-require('./components/HomeIndex');
+require('./components/Home/Index');
 require('./components/GoogleMap/Map');
+require('./components/GoogleMap/Geocode');
 require('./theme');
-
-require('./components/create');
 
 require('./components/Form/AllForm');
 require('./components/Form/basic');
