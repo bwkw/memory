@@ -1,17 +1,23 @@
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import ReactDOM from 'react-dom';
+import Geocode from './Geocode';
+
 
 const containerStyle = {
   width: "400px",
   height: "400px",
 };
 
-const center = {
-  lat: 35.69575,
-  lng: 139.77521,
-};
 
 export const Map = () => {
+  const {lat, lng} = Geocode();
+
+  const center = {
+    lat: lat,
+    lng: lng,
+  }
+  
+  console.log(center);
   return (
     <LoadScript googleMapsApiKey={process.env.MIX_GOOGLE_MAP_API_KEY}>
       <GoogleMap
