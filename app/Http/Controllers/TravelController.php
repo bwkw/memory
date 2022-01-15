@@ -46,7 +46,7 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        return view('Travel/show')->with(["travel"=>$travel->get()]);
+        return view('Travel/show')->with(["travel"=>$travel]);
     }
 
     /**
