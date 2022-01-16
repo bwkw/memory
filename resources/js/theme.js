@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles';
 export const theme = createTheme({
   typography: {
     fontFamily: [
-      'Bad Script',
+      'Moon Dance',
       'Noto Serif JP'
     ].join(",")
   }
