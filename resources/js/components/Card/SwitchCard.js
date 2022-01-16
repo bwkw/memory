@@ -7,7 +7,7 @@ import { theme } from '../../theme'
 import { ThemeProvider } from '@mui/material/styles';
 
 
-function GetLaravelApi() {
+function GetLaravelApiIndex() {
 	const [datas, setDatas] = useState([]);
 	
 	useEffect(() => {
@@ -22,21 +22,21 @@ function GetLaravelApi() {
 		  });
 	},[])
 
-	return datas
+	return datas;
 }
 
-export default function LaravelApiCard() {
-	const laravelApiDatas = GetLaravelApi();
+function Index() {
+	const laravelApiIndexDatas = GetLaravelApiIndex();
 	
 	return(
 		<ThemeProvider theme={theme}>
-			<BaseCard items={laravelApiDatas} />
+			<BaseCard items={laravelApiIndexDatas} />
 		</ThemeProvider>
 	);
 }
 
-if (document.getElementById('index_card')) {
+if (document.getElementById('index')) {
 	ReactDOM.render(
-	  <LaravelApiCard />, document.getElementById('index_card')
+	  <Index />, document.getElementById('index')
 	);
 }
