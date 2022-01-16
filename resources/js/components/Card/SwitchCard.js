@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import { Switch } from 'react-router-dom';
 import axios from 'axios';
-import BaseCard from './BaseCard';
-import { theme } from '../../theme'
-import { ThemeProvider } from '@mui/material/styles';
 
 
-function GetLaravelApiIndex() {
+export default function GetLaravelApiIndex() {
 	const [datas, setDatas] = useState([]);
 	
 	useEffect(() => {
@@ -23,20 +19,4 @@ function GetLaravelApiIndex() {
 	},[])
 
 	return datas;
-}
-
-function Index() {
-	const laravelApiIndexDatas = GetLaravelApiIndex();
-	
-	return(
-		<ThemeProvider theme={theme}>
-			<BaseCard items={laravelApiIndexDatas} />
-		</ThemeProvider>
-	);
-}
-
-if (document.getElementById('index')) {
-	ReactDOM.render(
-	  <Index />, document.getElementById('index')
-	);
 }

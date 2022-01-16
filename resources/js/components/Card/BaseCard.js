@@ -16,7 +16,7 @@ export default function BaseCard(props) {
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               component="img"
-              height="140"
+              height="200"
               image={item.image_path}
               alt={item.name}
             />

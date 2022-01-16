@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { theme } from '../../theme'
+import { theme } from '@/theme'
 import { ThemeProvider } from '@mui/material/styles';
-import Map from '../GoogleMap/Map';
+import Map from '@/components/GoogleMap/Map';
 
 
 function GetLaravelApiShow() {

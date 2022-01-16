@@ -13,6 +13,7 @@ function Index() {
   return(
     <ThemeProvider theme={theme}>
       <Create />
+      <br />
 	  <BaseCard items={laravelApiIndexDatas} />
     </ThemeProvider>
   );
