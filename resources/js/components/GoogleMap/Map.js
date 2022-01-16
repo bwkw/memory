@@ -1,6 +1,4 @@
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import ReactDOM from 'react-dom';
-import Geocode from './Geocode';
 
 
 const containerStyle = {
@@ -9,8 +7,9 @@ const containerStyle = {
 };
 
 
-export const Map = () => {
-  const {lat, lng} = Geocode();
+export default function Map(props) {
+  const lat = props.lat;
+  const lng = props.lng
 
   const center = {
     lat: lat,
@@ -27,9 +26,3 @@ export const Map = () => {
     </LoadScript>
   );
 };
-
-if (document.getElementById('test')) {
-	ReactDOM.render(
-	  <Map />, document.getElementById('test')
-	);
-}
