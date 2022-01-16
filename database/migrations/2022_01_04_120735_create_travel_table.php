@@ -16,7 +16,9 @@ class CreateTravelTable extends Migration
         Schema::create('travel', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->string('address', 100);
+            $table->float('latitude', 10, 7);
+            $table->float('longitude', 10, 7);
+            $table->datetime('shooting_date');
             $table->string('image_path', 300);
             $table->timestamps();
         });
