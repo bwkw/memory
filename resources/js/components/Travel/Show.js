@@ -13,9 +13,9 @@ function GetLaravelApiShow() {
   useEffect(() => {
     axios
       .get("/api/travels/" + id)
-    .then(response => {
-      setData(response.data);
-    })
+      .then(response => {
+        setData(response.data);
+      })
       .catch(() => {
       console.log('通信に失敗しました');
       });
