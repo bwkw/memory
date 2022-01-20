@@ -5,6 +5,7 @@ export const theme = createTheme({
     fontFamily: [
       'Moon Dance',
       'Noto Serif JP'
-    ].join(",")
-  }
+    ].join(","),
+    fontSize: '18'
+  },
 });
