@@ -14,7 +14,8 @@ class ApiSceneryController extends Controller
      */
     public function index()
     {
-        //
+        $sceneries = Scenery::all();
+        return response()->json($sceneries, 200);
     }
 
     /**
