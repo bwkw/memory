@@ -22,7 +22,7 @@ export default function BaseCard(props) {
               alt={item.name}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography gutterBottom variant="h6" component="div">
                 {item.name}
               </Typography>
               <Typography variant="body2" color="text.secondary">
