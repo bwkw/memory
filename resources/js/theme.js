@@ -6,6 +6,6 @@ export const theme = createTheme({
       'Moon Dance',
       'Noto Serif JP'
     ].join(","),
-    fontSize: '18'
+    fontSize: 18
   },
 });
