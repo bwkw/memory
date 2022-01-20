@@ -18,5 +18,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/travels', [TravelController::class, 'index'])->name('travel_index');
+// Route::get('/travels', [TravelController::class, 'index'])->name('travel_index');
 Route::get('/travels/{travel}', [TravelController::class, 'show'])->name('travel_show');
+
+Route::get('/{any}', function () {
+    return view('Category/index');
+});
