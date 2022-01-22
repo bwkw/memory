@@ -6,3 +6,7 @@ body {
 .navbar-brand {
   font-size: 1.9rem;
 }
+
+.py-4 {
+  padding-top: 0rem !important;
+}
