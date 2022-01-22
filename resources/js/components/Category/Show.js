@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { useParams } from 'react-router-dom'
 import axios from 'axios';
+
 import { theme } from '@/theme'
 import { ThemeProvider } from '@mui/material/styles';
 import Map from '@/components/GoogleMap/Map';
 
 
-function GetLaravelApiShow() {
-  const id = document.getElementById('travel_show').dataset.id;
+{/* 各CategoryのShowメインコンポーネント */}
+export default function Show() {
+  const { id } = useParams();
 	const [data, setData] = useState([]);
 	
   useEffect(() => {
@@ -17,26 +19,13 @@ function GetLaravelApiShow() {
         setData(response.data);
       })
       .catch(() => {
-      console.log('通信に失敗しました');
+        console.log('通信に失敗しました');
       });
 	 },[])
 
-	return data
-}
-
-
-function Show() {
-  const data = GetLaravelApiShow();
-  
   return(
 		<ThemeProvider theme={theme}>
 			<Map lat={data.latitude} lng={data.longitude} />
 		</ThemeProvider>
-	);
-}
-
-if (document.getElementById('travel_show')) {
-	ReactDOM.render(
-	  <Show />, document.getElementById('travel_show')
 	);
 }
