@@ -8,4 +8,9 @@ export const theme = createTheme({
     ].join(","),
     fontSize: 18
   },
+  palette: {
+    secondary: {
+      main: "#546e7a"
+    }
+  }
 });
