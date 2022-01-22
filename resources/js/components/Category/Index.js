@@ -1,11 +1,13 @@
 import React, { useEffect, useState }  from 'react';
 import axios from 'axios';
+
 import BaseCard from '@/components/Card/BaseCard';
 import Create from '@/components/Button/Create';
 import { theme } from '@/theme'
 import { ThemeProvider } from '@mui/material/styles';
 
 
+{/* 各CategoryのIndexメインコンポーネント */}
 export default function Index(props) {
   const [datas, setDatas] = useState([]);
   
