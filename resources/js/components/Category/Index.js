@@ -3,8 +3,6 @@ import axios from 'axios';
 
 import BaseCard from '@/components/Card/BaseCard';
 import Create from '@/components/Button/Create';
-import { theme } from '@/theme'
-import { ThemeProvider } from '@mui/material/styles';
 
 
 {/* 各CategoryのIndexメインコンポーネント */}
@@ -25,10 +23,10 @@ export default function Index(props) {
 
 
   return(
-    <ThemeProvider theme={theme}>
+  	<div>
       <Create />
       <br />
       <BaseCard items={datas} />
-    </ThemeProvider>
+    </div>
   );
 }
