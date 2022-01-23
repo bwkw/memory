@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import ButtonBase from '@mui/material/ButtonBase';
 import Grid from '@mui/material/Grid';
@@ -100,29 +101,29 @@ export default function Category() {
       <Grid item xs={8} md={5}>
         <ImageButton
           focusRipple
-          key={item.img_title}
           style={{
             width: item.img_width,
           }}
-          href={item.onclick_url}
         >
           <ImageSrc style={{ backgroundImage: `url(${item.img_url})` }} />
           <ImageBackdrop className="MuiImageBackdrop-root" />
           <Image>
-            <Typography
-              component="span"
-              variant="subtitle1"
-              color="inherit"
-              sx={{
-                position: 'relative',
-                p: 4,
-                pt: 2,
-                pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-              }}
-            >
-              {item.img_title}
-              <ImageMarked className="MuiImageMarked-root" />
-            </Typography>
+            <Link to={ item.onclick_url } style={{ color: '#FFF' }} >
+              <Typography
+                component="span"
+                variant="subtitle1"
+                color="inherit"
+                sx={{
+                  position: 'relative',
+                  p: 4,
+                  pt: 2,
+                  pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                }}
+              >
+                {item.img_title}
+                <ImageMarked className="MuiImageMarked-root" />
+              </Typography>
+            </Link>
           </Image>
         </ImageButton>
       </Grid>
