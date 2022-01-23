@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 import GoogleGeocode from "react-geocode";
 
 
 function GetGeocodeName() {
-    const id = document.getElementById('test').dataset.id;
+  const id = document.getElementById('test').dataset.id;
 	const [name, setName] = useState([]);
 	
-    useEffect(() => {
-      axios
-        .get("/api/travels/" + id)
-	    .then(response => {
-	      setName(response.data.name);
-	    })
-        .catch(() => {
-	      console.log('通信に失敗しました');
-        });
-	 },[])
+  useEffect(() => {
+    axios
+      .get("/api/travels/" + id)
+    .then(response => {
+      setName(response.data.name);
+    })
+    .catch(() => {
+      console.log('通信に失敗しました');
+    });
+	 },[]);
 
-	return name
+	return name;
 }
 
 
