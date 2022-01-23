@@ -1,11 +1,21 @@
 body {
-  font-family: 'Moon Dance', sans-serif;
+  font-family: 'Moon Dance','Noto Serif JP';
   font-size: 1.2rem;
   background-image: url("https://couple-memory.s3.ap-northeast-1.amazonaws.com/background/white_00041.jpeg");
   background-repeat:no-repeat;
   background-position:center;
   background-size:cover;
   height:100vh;
+}
+
+
+
+.MuiTypography-root {
+  font-family: 'Moon Dance','Noto Serif JP';
+}
+
+.css-7qkvzx-MuiTypography-root {
+  font-family: 'Moon Dance','Noto Serif JP';
 }
 
 .navbar-brand {
