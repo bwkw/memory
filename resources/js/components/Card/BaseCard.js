@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -32,7 +32,9 @@ export default function BaseCard(props) {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" href={`/travels/${item.id}`}>Details</Button>
+              <Link to={ `/travels/${item.id}` }>
+                Details
+              </Link>
             </CardActions>
           </Card>
         </Grid>
