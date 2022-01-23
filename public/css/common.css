@@ -1,0 +1,17 @@
+body {
+  font-family: 'Moon Dance', sans-serif;
+  font-size: 1.2rem;
+  background-image: url("https://couple-memory.s3.ap-northeast-1.amazonaws.com/background/white_00041.jpeg");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  height:100vh;
+}
+
+.navbar-brand {
+  font-size: 1.9rem;
+}
+
+.py-4 {
+  padding-top: 0rem !important;
+}
