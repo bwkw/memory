@@ -6,11 +6,11 @@ import CategoryIndex from '@/components/Category/Index';
 import CategoryShow from '@/components/Category/Show';
 import HomeIndex from '@/components/Home/Index';
 import HeaderBar from '@/components/Bar/HeaderBar';
-import { theme } from '@/theme'
+import { theme } from '@/theme';
 import { ThemeProvider } from '@mui/material/styles';
 
 
-const Router = () => {
+function Router() {
   const Body = (
     <Routes>
       <Route path="/" element={<HomeIndex />} />
@@ -20,7 +20,7 @@ const Router = () => {
       <Route path="/sceneries" element={<CategoryIndex category="sceneries" />} />
       <Route path="/datings" element={<CategoryIndex category="datings" />} />
     </Routes>
-  )
+  );
   
   return (
     <BrowserRouter>
@@ -29,8 +29,8 @@ const Router = () => {
         { Body }
       </ThemeProvider>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 if (document.getElementById('main')) {
   ReactDOM.render(
