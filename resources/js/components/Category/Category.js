@@ -32,7 +32,7 @@ const items = [
       img_width: '100%',
       onclick_url: '/datings'
     },
-]
+];
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
@@ -98,35 +98,37 @@ export default function Category() {
   return (
     <Grid container rowSpacing={2} columnSpacing={4} justifyContent="center">
       {items.map((item) => (
-      <Grid item xs={8} md={5}>
-        <ImageButton
-          focusRipple
-          style={{
-            width: item.img_width,
-          }}
-        >
-          <ImageSrc style={{ backgroundImage: `url(${item.img_url})` }} />
-          <ImageBackdrop className="MuiImageBackdrop-root" />
-          <Image>
-            <Link to={ item.onclick_url } style={{ color: '#FFF' }} >
-              <Typography
-                component="span"
-                variant="subtitle1"
-                color="inherit"
-                sx={{
-                  position: 'relative',
-                  p: 4,
-                  pt: 2,
-                  pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-                }}
-              >
-                {item.img_title}
-                <ImageMarked className="MuiImageMarked-root" />
-              </Typography>
-            </Link>
-          </Image>
-        </ImageButton>
-      </Grid>
+        <React.Fragment key={item.id}>
+          <Grid item xs={8} md={5}>
+            <ImageButton
+              focusRipple
+              style={{
+                width: item.img_width,
+              }}
+            >
+              <ImageSrc style={{ backgroundImage: `url(${item.img_url})` }} />
+              <ImageBackdrop className="MuiImageBackdrop-root" />
+              <Image>
+                <Link to={ item.onclick_url } style={{ color: '#FFF' }}>
+                  <Typography
+                    component="div"
+                    variant="subtitle1"
+                    color="inherit"
+                    sx={{
+                      position: 'relative',
+                      p: 4,
+                      pt: 2,
+                      pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                    }}
+                  >
+                    {item.img_title}
+                    <ImageMarked className="MuiImageMarked-root" />
+                  </Typography>
+                </Link>
+              </Image>
+            </ImageButton>
+          </Grid>
+        </React.Fragment>
       ))}
     </Grid>
   );
