@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Link from '@mui/material/Link';
-import MenuIcon from '@mui/icons-material/Menu';
+import MuiLink from '@mui/material/Link';
+import Menu from '@/components/Menu/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
@@ -14,28 +14,20 @@ export default function HeaderBar() {
     <Box sx={{ flexGrow: 1, mb: 4 }}>
       <AppBar position="static" color="secondary">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            <Link className="navbar-brand" href="/" underline="none" color="inherit">
+          <Menu />
+          <Typography variant="h5" component="span" sx={{ flexGrow: 1 }}>
+            <Link to="/" underline="none" color="inherit" style={{ color: '#FFF' }}>
               Toi et Moi
             </Link>
           </Typography>
-          <Link href="/login" underline="none" color="inherit">
+          <MuiLink href="/login" underline="none" color="inherit" sx={{ pr: 3 }}>
             Login
-          </Link>
-          <Link href="/register" underline="none" color="inherit">
+          </MuiLink>
+          <MuiLink href="/register" underline="none" color="inherit" sx={{ pr: 1 }}>
             Register
-          </Link>
+          </MuiLink>
         </Toolbar>
       </AppBar>
     </Box>
   );
-};
+}
