@@ -9,12 +9,12 @@ const containerStyle = {
 
 export default function Map(props) {
   const lat = props.lat;
-  const lng = props.lng
+  const lng = props.lng;
 
   const center = {
     lat: lat,
     lng: lng,
-  }
+  };
 
   return (
     <LoadScript googleMapsApiKey={process.env.MIX_GOOGLE_MAP_API_KEY}>
@@ -25,4 +25,4 @@ export default function Map(props) {
       ></GoogleMap>
     </LoadScript>
   );
-};
+}
