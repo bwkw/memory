@@ -8,12 +8,22 @@ import Menu from '@/components/Menu/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+import { makeStyles } from '@mui/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+  toolBar: {
+    backgroundColor: "#546e7a",
+  },
+}));
 
 export default function HeaderBar() {
+  const classes = useStyles();
+  
   return (
     <Box sx={{ flexGrow: 1, mb: 4 }}>
-      <AppBar position="static" color="secondary">
-        <Toolbar>
+      <AppBar position="static">
+        <Toolbar className={classes.toolBar}>
           <Menu />
           <Typography variant="h5" component="span" sx={{ flexGrow: 1 }}>
             <Link to="/" underline="none" color="inherit" style={{ color: '#FFF' }}>
