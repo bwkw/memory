@@ -13,18 +13,16 @@ export default function Index(props) {
 		axios
 			.get(`/api/${props.category}`)
 		  .then(response => {
-		    setDatas(response.data);     
-		    console.log(response.data);　
+		    setDatas(response.data);
 		  })
 		  .catch(() => {
 		    console.log('通信に失敗しました');
 		  });
-	},[])
-
+	},[]);
 
   return(
   	<div>
-      <Create />
+      <Create url={`/${props.category}/create`} />
       <br />
       <BaseCard items={datas} />
     </div>
