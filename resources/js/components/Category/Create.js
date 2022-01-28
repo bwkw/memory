@@ -1,7 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+import AllForm from '@/components/Form/AllForm';
 
 
-function Create() {
-  
+{/* 各CategoryのCreateメインコンポーネント */}
+export default function Create() {
+  return(
+    <AllForm />
+  );
 }
