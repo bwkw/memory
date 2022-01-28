@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import CategoryIndex from '@/components/Category/Index';
 import CategoryShow from '@/components/Category/Show';
+import CategoryCreate from '@/components/Category/Create';
 import HomeIndex from '@/components/Home/Index';
 import HeaderBar from '@/components/Bar/HeaderBar';
 import { theme } from '@/theme';
@@ -15,6 +16,7 @@ function Router() {
     <Routes>
       <Route path="/" element={<HomeIndex />} />
       <Route path="/travels" element={<CategoryIndex category="travels" />} />
+      <Route path="/travels/create" element={<CategoryCreate category="travels" />} />
       <Route path="/travels/:id" element={<CategoryShow category="travels" />} />
       <Route path="/foods" element={<CategoryIndex category="foods" />} />
       <Route path="/sceneries" element={<CategoryIndex category="sceneries" />} />
@@ -30,7 +32,7 @@ function Router() {
       </ThemeProvider>
     </BrowserRouter>
   );
-};
+}
 
 if (document.getElementById('main')) {
   ReactDOM.render(
