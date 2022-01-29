@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
 import { useForm, Controller } from "react-hook-form";
 
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import Box from '@mui/material/Box';
 import { Button, MenuItem } from "@material-ui/core";
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import DateTimePicker from '@mui/lab/DateTimePicker';
 import Grid from '@material-ui/core/Grid';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import Paper from '@material-ui/core/Paper';
 import TextField from "@material-ui/core/TextField";
 import TableContainer from '@material-ui/core/TableContainer';
@@ -14,15 +15,16 @@ import { UserInputData } from "@/components/Form/AllForm";
 export default function Basic(props) {
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      checkBox: false,
+      datepicker: "",
       textBox: "",
       pullDown: "",
     },
+    mode: "onChange",
   });
-  const { currentState, setCurrentState } = useContext(UserInputData);
+  const { setCurrentState } = useContext(UserInputData);
   const onSubmit = (data) => {
     props.handleNext();
-    setCurrentState({...currentState, "Basic": data });
+    setCurrentState(data);
   };
   
   return (
@@ -30,21 +32,22 @@ export default function Basic(props) {
       <Grid container>
         <Grid sm={2} />
         <Grid lg={8} sm={8} spacing={10}>
+          <Box m={3} />
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller                      
               control={control}
-              name="checkBox"
+              name="datepicker"
               render={({ field: { value, onChange } }) => (
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={value}
-                      onChange={onChange}
-                      color='primary'
-                    />
-                  }
-                  label="チェックボックス"
-                />
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DateTimePicker
+                    renderInput={(props) => <TextField {...props} />}
+                    label="DateTimePicker"
+                    value={value}
+                    onChange={(newValue) => {
+                      setValue(newValue);
+                    }}
+                  />
+                </LocalizationProvider>
               )}
             />
             <Controller
@@ -53,10 +56,10 @@ export default function Basic(props) {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label="テキストフィールド"
+                  label="名称"
                   fullWidth
                   margin="normal"
-                  placeholder="プレースホルダー"
+                  placeholder="名称"
                 />
               )}
             />
