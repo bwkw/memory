@@ -15,40 +15,29 @@ import { UserInputData } from "@/components/Form/AllForm";
 
 
 var item = {
-  'checkBox': 'チェックボックス',
+  'datepicker': '日付',
   'textBox': 'テキストボックス',
   'pullDown': 'プルダウン',
-  'multilineText': 'マルチラインテキスト'
 };
 
 export default function Confirm(props) {
   const { currentState } = useContext(UserInputData);
+  console.log(currentState);
   const onSubmit = () => {
     alert(JSON.stringify(currentState));
   };
   const inputDataLists = [];
   var id = 0;
-  for ( var k in currentState) {
-    for ( var v in currentState[k]) {
-      var value = '';
-      if (currentState[k][v] === true) {
-        value = 'チェックしました';
-      } else if (currentState[k][v] === false) {
-        value = 'チェックしていません';
-      } else if (currentState[k][v] === '') {
-        value = '未入力';
-      } else {
-        value = currentState[k][v];
+  for ( var name in currentState ) {
+    inputDataLists.push(
+      {
+        "id": id,
+        "name": item[name],
+        "value": currentState[name]
       }
-      inputDataLists.push(
-        {
-          "id": id,
-          "name": item[v],
-          "value": value
-        }
-      );
-      id++;
-    }
+    );
+    
+    id++;
   }
   
   return (
@@ -56,6 +45,7 @@ export default function Confirm(props) {
       <Grid container>
         <Grid sm={2} />
         <Grid lg={8} sm={8} spacing={10}>
+        <Box m={3} />
           <Table aria-label="Customer Input Data">
             <TableHead>
               <TableRow>
