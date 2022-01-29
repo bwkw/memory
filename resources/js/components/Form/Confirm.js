@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 
 import Box from '@mui/material/Box';
-import { Grid } from '@material-ui/core';
-import Button from '@mui/material/Button';
-import { UserInputData } from "@/components/Form/AllForm";
+import { Button } from "@material-ui/core";
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Stack from '@mui/material/Stack';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,14 +11,14 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import { UserInputData } from "@/components/Form/AllForm";
 
 
 var item = {
-    'checkBox': 'チェックボックス',
-    'textBox': 'テキストボックス',
-    'pullDown': 'プルダウン',
-    'multilineText': 'マルチラインテキスト'
+  'checkBox': 'チェックボックス',
+  'textBox': 'テキストボックス',
+  'pullDown': 'プルダウン',
+  'multilineText': 'マルチラインテキスト'
 };
 
 export default function Confirm(props) {
@@ -76,21 +76,18 @@ export default function Confirm(props) {
               }
             </TableBody>
           </Table>
-          <Box
-            mt={2}
-            mb={4}
-          >
+          <Box mt={2} mb={4}>
             <Stack spacing={2} direction="row">
-        <Button variant="contained" color="primary" onClick={props.handleBack}>
-            戻る
-        </Button>
-        <Button variant="contained" color="primary" onClick={onSubmit}>
-            送信
-        </Button>
-        </Stack>
-        </Box>
-          </Grid>
-         </Grid>
+              <Button variant="contained" color="primary" onClick={props.handleBack}>
+                  戻る
+              </Button>
+              <Button variant="contained" color="primary" onClick={onSubmit}>
+                  送信
+              </Button>
+            </Stack>  
+          </Box>
+        </Grid>
+      </Grid>
     </TableContainer>
   );
 }
