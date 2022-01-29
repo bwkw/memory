@@ -30,7 +30,7 @@ export const UserInputData = createContext();
 
 
 export default function AllForm() {
-  const [currentState, setCurrentState] = useState({});
+  const [currentState, setCurrentState] = useState();
   const value = {currentState, setCurrentState};
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
