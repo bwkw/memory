@@ -28,7 +28,6 @@ function getStepContent(stepIndex, handleNext, handleBack) {
 
 export const UserInputData = createContext();
 
-
 export default function AllForm() {
   const [currentState, setCurrentState] = useState();
   const value = {currentState, setCurrentState};
