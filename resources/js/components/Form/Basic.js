@@ -11,11 +11,10 @@ import { UserInputData } from "@/components/Form/AllForm";
 
 
 export default function Basic(props) {
-  
-  const { control, handleSubmit } = useForm({
+  const { control, formState: { errors }, handleSubmit, register } = useForm({
     defaultValues: {
-      datepicker: "",
-      textBox: "",
+      date: "",
+      place: "",
       pullDown: "",
     },
     mode: "onChange",
@@ -35,7 +34,7 @@ export default function Basic(props) {
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller                      
               control={control}
-              name="datepicker"
+              name="date"
               render={({ field }) => (
                 <TextField
                   {...field}
@@ -48,12 +47,16 @@ export default function Basic(props) {
                     shrink:true,
                   }}
                   sx={{ width: 220 }}
+                  {...register("date", {
+                    required: { value: true, message: "Please enter a date" }
+                  })}
                 />
               )}
             />
+            {errors.date && <p style={{ color: "red", fontSize: "20px", fontFamily: "Moon Dance" }}>{errors.date.message}</p>}
             <Controller
               control={control}
-              name="textBox"
+              name="place"
               render={({ field }) => (
                 <TextField
                   {...field}
@@ -62,10 +65,15 @@ export default function Basic(props) {
                   margin="normal"
                   inputProps={{ style: {fontSize: "20px", fontFamily: "Moon Dance"} }}  
                   InputLabelProps={{ style: {fontFamily: "Moon Dance"} }}
-                  placeholder="名称"
+                  placeholder="place"
+                  {...register("place", {
+                    required: { value: true, message: "Please enter a place" },
+                    maxLength: { value: 10, message: "The maximum value entered is 10" }
+                  })}
                 />
               )}
             />
+            {errors.place && <p style={{ color: "red", fontSize: "20px", fontFamily: "Moon Dance" }}>{errors.place.message}</p>}
             <Controller
               control={control}
               name="pullDown"
