@@ -15,9 +15,9 @@ import { UserInputData } from "@/components/Form/AllForm";
 
 
 var item = {
-  'datepicker': '日付',
-  'textBox': 'テキストボックス',
-  'pullDown': 'プルダウン',
+  "date": "日付",
+  "place": "場所",
+  "image": "画像",
 };
 
 export default function Confirm(props) {
