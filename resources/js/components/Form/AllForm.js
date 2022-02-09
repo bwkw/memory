@@ -43,8 +43,8 @@ export default function AllForm() {
   
   return (
     <Grid container>
-      <Grid sm={2} />
-      <Grid lg={8} sm={8} spacing={10}>
+      <Grid xs={1} sm={2} />
+      <Grid xs={10} sm={8}>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
