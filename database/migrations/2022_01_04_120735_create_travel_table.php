@@ -19,7 +19,7 @@ class CreateTravelTable extends Migration
             $table->float('latitude', 10, 7);
             $table->float('longitude', 10, 7);
             $table->datetime('shooting_date');
-            $table->string('image_path', 300);
+            $table->string('image_path', 300)->nullable();
             $table->timestamps();
         });
     }
