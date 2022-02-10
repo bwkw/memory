@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Travel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ApiTravelController extends Controller
 {
@@ -24,9 +25,19 @@ class ApiTravelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Travel $travel)
     {
-        //
+        $travel->name = $request->name;
+        $travel->latitude = $request->latitude;
+        $travel->longitude = $request->longitude;
+        $travel->shooting_date = $request->shooting_date;
+        $travel->save();
+        // $image = $request->image;
+        // dd($image);
+        // $path = Storage::disk('s3')->putFile('travels', $image, 'public');
+        // $travel->image_path = Storage::disk('s3')->url($path);
+        // $travel->save();
+        // return $travel;
     }
 
     /**
