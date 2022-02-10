@@ -14,8 +14,8 @@ export default function Basic(props) {
   const { currentState, setCurrentState } = useContext(UserInputData);
   const { control, formState: { errors }, handleSubmit, register } = useForm({
     defaultValues: {
-      date: currentState ? currentState["date"] : "",
-      place: currentState ? currentState["place"] : "",
+      shooting_date: currentState ? currentState["shooting_date"] : "",
+      name: currentState ? currentState["name"] : "",
       image: "",
     },
     mode: "onChange",
@@ -34,12 +34,12 @@ export default function Basic(props) {
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller                      
               control={control}
-              name="date"
+              name="shooting_date"
               render={({ field }) => (
                 <TextField
                   {...field}
-                  id="date"
-                  label="date"
+                  id="shooting_date"
+                  label="shooting_date"
                   type="date"
                   inputProps={{ style: {fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP']} }}  
                   InputLabelProps={{ 
@@ -47,33 +47,32 @@ export default function Basic(props) {
                     shrink:true,
                   }}
                   sx={{ width: 220 }}
-                  {...register("date", {
-                    required: { value: true, message: "Please enter a date" }
+                  {...register("shooting_date", {
+                    required: { value: true, message: "Please enter a shooting_date" }
                   })}
                 />
               )}
             />
-            {errors.date && <p style={{ color: "red", fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP'] }}>{errors.date.message}</p>}
+            {errors.shooting_date && <p style={{ color: "red", fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP'] }}>{errors.shooting_date.message}</p>}
             <br/>
             <Controller
               control={control}
-              name="place"
+              name="name"
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label="place"
+                  label="name"
                   margin="normal"
                   inputProps={{ style: {fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP']} }}  
-                  InputLabelProps={{ style: {fontFamily:['Moon Dance', 'Noto Serif JP']} }}
-                  placeholder="place"
-                  {...register("place", {
-                    required: { value: true, message: "Please enter a place" },
+                  placeholder="name"
+                  {...register("name", {
+                    required: { value: true, message: "Please enter a name" },
                     maxLength: { value: 10, message: "The maximum value entered is 10" }
                   })}
                 />
               )}
             />
-            {errors.place && <p style={{ color: "red", fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP'] }}>{errors.place.message}</p>}
+            {errors.name && <p style={{ color: "red", fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP'] }}>{errors.name.message}</p>}
             <br/>
             <br/>
             <Controller
@@ -86,7 +85,6 @@ export default function Basic(props) {
                   margin="normal"
                   type="file"
                   inputProps={{ style: {fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP']} }}  
-                  InputLabelProps={{ style: {fontFamily:['Moon Dance', 'Noto Serif JP']} }}
                 />
               )}
             />

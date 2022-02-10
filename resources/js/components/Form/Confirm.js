@@ -1,8 +1,11 @@
-import { useContext } from "react";
+import React, { useContext, useState } from 'react';
+import axios from 'axios';
 
 import Box from '@mui/material/Box';
 import { Button } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
+import Geocode from '@/components/GoogleMap/Geocode';
+import GoogleGeocode from "react-geocode";
 import Paper from '@material-ui/core/Paper';
 import Stack from '@mui/material/Stack';
 import Table from '@material-ui/core/Table';
@@ -11,20 +14,20 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { UserInputData } from "@/components/Form/AllForm";
+import { UserInputData } from '@/components/Form/AllForm';
 
 
 var item = {
-  "date": "日付",
-  "place": "場所",
+  "shooting_date": "撮影日",
+  "name": "名称",
   "image": "画像",
 };
 
 export default function Confirm(props) {
   const { currentState } = useContext(UserInputData);
-  const onSubmit = () => {
-    alert(JSON.stringify(currentState));
-  };
+  const [lat, setLat] = useState([]);
+  const [lng, setLng] = useState([]);
+  
   const inputDataLists = [];
   var id = 0;
   for ( var name in currentState ) {
@@ -37,6 +40,32 @@ export default function Confirm(props) {
     );
     
     id++;
+  }
+  
+  GoogleGeocode.setApiKey(process.env.MIX_GOOGLE_MAP_API_KEY);
+    GoogleGeocode.fromAddress(currentState.name).then(
+      response => {
+        const location = response.results[0].geometry.location;
+        setLat(location.lat);
+        setLng(location.lng);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  
+  function onSubmit() {
+    axios
+      .post("/api/travels", {
+        name: currentState.name,
+        latitude: lat,
+        longitude: lng,
+        shooting_date: currentState.shooting_date,
+        image: currentState.image
+      })
+      .then(res => {
+        console.log(res);
+    });
   }
   
   return (
