@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 import Box from '@mui/material/Box';
 import { Button } from "@material-ui/core";
@@ -22,7 +22,6 @@ var item = {
 
 export default function Confirm(props) {
   const { currentState } = useContext(UserInputData);
-  console.log(currentState);
   const onSubmit = () => {
     alert(JSON.stringify(currentState));
   };
