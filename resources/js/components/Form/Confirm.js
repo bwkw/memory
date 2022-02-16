@@ -37,15 +37,7 @@ export default function Confirm(props) {
     id++;
   }
   
- 
-  
   function onSubmit() {
-    postDatas();
-  }
-
-  function postDatas() {
-    console.log("post");
-    console.log(currentState);
     axios
       .post("/api/travels", {
         name: currentState.name,
@@ -58,7 +50,6 @@ export default function Confirm(props) {
         console.log(res);
     });
   }
-  
   
   
   return (
