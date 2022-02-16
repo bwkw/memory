@@ -1,8 +1,9 @@
-import {useContext} from 'react';
+import { useContext, useState } from 'react';
 import { useForm, Controller } from "react-hook-form";
 
 import Box from '@mui/material/Box';
 import { Button } from "@material-ui/core";
+import GoogleGeocode from "react-geocode";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import TextField from "@material-ui/core/TextField";
@@ -20,8 +21,23 @@ export default function Basic(props) {
     },
     mode: "onChange",
   });
+  
+  function Geocode(data) {
+    GoogleGeocode.setApiKey(process.env.MIX_GOOGLE_MAP_API_KEY);
+    GoogleGeocode.fromAddress(data.name).then(
+      response => {
+        const location = response.results[0].geometry.location;
+        const resLat = location.lat;
+        const resLng = location.lng;
+        data["lat"] = resLat;
+        data["lng"] = resLng;
+      },
+    );
+  }
+  
   const onSubmit = (data) => {
     props.handleNext();
+    Geocode(data);
     setCurrentState(data);
   };
   
@@ -84,7 +100,6 @@ export default function Basic(props) {
                   label="image"
                   margin="normal"
                   type="file"
-                  inputProps={{ style: {fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP']} }}  
                 />
               )}
             />
