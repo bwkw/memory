@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useForm, Controller } from "react-hook-form";
 
 import Box from '@mui/material/Box';
@@ -17,7 +17,6 @@ export default function Basic(props) {
     defaultValues: {
       shooting_date: currentState ? currentState["shooting_date"] : "",
       name: currentState ? currentState["name"] : "",
-      image: "",
     },
     mode: "onChange",
   });
@@ -91,18 +90,6 @@ export default function Basic(props) {
             {errors.name && <p style={{ color: "red", fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP'] }}>{errors.name.message}</p>}
             <br/>
             <br/>
-            <Controller
-              control={control}
-              name="image"
-              render={({ field }) => (
-                <input
-                  {...field}
-                  label="image"
-                  margin="normal"
-                  type="file"
-                />
-              )}
-            />
             <Box
               mt={2}
               mb={4}
@@ -111,8 +98,9 @@ export default function Basic(props) {
                 variant="contained"
                 color="primary"
                 type="submit"
+                style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
               >
-                次へ
+                next
               </Button>
             </Box>
           </form>
