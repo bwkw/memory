@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
 
 import Box from '@mui/material/Box';
@@ -17,6 +17,8 @@ import { UserInputData } from '@/components/Form/AllForm';
 
 export default function Confirm(props) {
   const { currentState } = useContext(UserInputData);
+  const [image, setImage] = useState();
+  const [image_name, setImageName] = useState();
   const inputDataLists = [];
   var id = 0;
   
@@ -27,30 +29,42 @@ export default function Confirm(props) {
   };
 
   for ( var name in currentState ) {
-    inputDataLists.push(
-      {
-        "id": id,
-        "name": item[name],
-        "value": currentState[name]
-      }
-    );
+    if(item[name])
+      inputDataLists.push(
+        {
+          "id": id,
+          "name": item[name],
+          "value": currentState[name]
+        }
+      );
     id++;
   }
   
-  function onSubmit() {
+  const changeImage = (e) => {
+    if(!e.target.files) return;
+    
+    const file = e.target.files[0];
+    setImage(file);
+    setImageName(file.name);
+  };
+  
+  const onSubmit = () => {
+    const data = new FormData();
+    data.append('name', currentState.name);
+    data.append('latitude', currentState.lat);
+    data.append('longitude', currentState.lng);
+    data.append('shooting_date', currentState.shooting_date);
+    data.append('image', image);
+
+    const headers = { "content-type": "multipart/form-data" };
+    
     axios
-      .post("/api/travels", {
-        name: currentState.name,
-        latitude: currentState.lat,
-        longitude: currentState.lng,
-        shooting_date: currentState.shooting_date,
-        image: currentState.image
-      })
+      .post("/api/travels", data, { headers })
       .then(res => {
         console.log(res);
     });
-  }
-  
+  };
+
   
   return (
     <TableContainer component={Paper}>
@@ -78,13 +92,23 @@ export default function Confirm(props) {
               }
             </TableBody>
           </Table>
+          <br />
+          <label htmlFor="upload-button">
+            <input accept=".png, .jpg, .jpeg" id="upload-button" type="file" onChange={ changeImage } hidden />
+            <Button variant="contained" component="span" style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}>
+              upload
+            </Button>
+            <Box ml={3} component="span"/>
+            { image_name }
+          </label>
+      
           <Box mt={2} mb={4}>
             <Stack spacing={2} direction="row">
-              <Button variant="contained" color="primary" onClick={props.handleBack}>
-                  戻る
+              <Button variant="contained" color="primary" style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }} onClick={props.handleBack}>
+                back
               </Button>
-              <Button variant="contained" color="primary" onClick={onSubmit}>
-                  送信
+              <Button variant="contained" color="secondary" style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }} onClick={onSubmit}>
+                send
               </Button>
             </Stack>  
           </Box>
