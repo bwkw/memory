@@ -31,13 +31,12 @@ class ApiTravelController extends Controller
         $travel->latitude = $request->latitude;
         $travel->longitude = $request->longitude;
         $travel->shooting_date = $request->shooting_date;
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('travels', $image, 'public');
+        $travel->image_path = Storage::disk('s3')->url($path);
         $travel->save();
-        // $image = $request->image;
-        // dd($image);
-        // $path = Storage::disk('s3')->putFile('travels', $image, 'public');
-        // $travel->image_path = Storage::disk('s3')->url($path);
-        // $travel->save();
-        // return $travel;
+        
+        return redirect("/travels/create");
     }
 
     /**
