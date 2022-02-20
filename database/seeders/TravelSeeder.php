@@ -22,27 +22,6 @@ class TravelSeeder extends Seeder
                 'shooting_date' => date('2021-09-02 15:35:00'),
                 'image_path' => 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/travels/%E4%B8%8B%E5%91%82%E6%B8%A9%E6%B3%89.jpeg',
             ],
-            [
-                'name' => '下呂温泉',
-                'latitude' => 35.8083342,
-                'longitude' => 137.2496708,
-                'shooting_date' => date('2021-09-02 15:35:00'),
-                'image_path' => 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/travels/%E4%B8%8B%E5%91%82%E6%B8%A9%E6%B3%89.jpeg',
-            ],
-            [
-                'name' => '下呂温泉',
-                'latitude' => 35.8083342,
-                'longitude' => 137.2496708,
-                'shooting_date' => date('2021-09-02 15:35:00'),
-                'image_path' => 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/travels/%E4%B8%8B%E5%91%82%E6%B8%A9%E6%B3%89.jpeg',
-            ],
-            [
-                'name' => '下呂温泉',
-                'latitude' => 35.8083342,
-                'longitude' => 137.2496708,
-                'shooting_date' => date('2021-09-02 15:35:00'),
-                'image_path' => 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/travels/%E4%B8%8B%E5%91%82%E6%B8%A9%E6%B3%89.jpeg',
-            ],
         );
     }
 }
