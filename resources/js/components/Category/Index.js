@@ -10,17 +10,24 @@ import Stack from '@mui/material/Stack';
 {/* 各CategoryのIndexメインコンポーネント */}
 export default function Index(props) {
   const [datas, setDatas] = useState([]);
+  const [datasFlag, setDatasFlag] = useState(false);
   
 	useEffect(() => {
 		axios
 			.get(`/api/${props.category}`)
 		  .then(response => {
-		    setDatas(response.data);
+		  	const data = response.data;
+		  	if (data.length > 0) {
+		  	  setDatas(data);
+		      setDatasFlag(true);
+		  	} else {
+		  		setDatasFlag(false);
+		  	}
 		  })
 		  .catch(() => {
-		    console.log('通信に失敗しました');
+		    console.log("通信に失敗しました");
 		  });
-	},[]);
+	}, [props.category]);
 
 
   return(
@@ -32,7 +39,7 @@ export default function Index(props) {
       
       <br />
       
-      <BaseCard items={datas} />
+      { datasFlag && <BaseCard items={datas} /> }
     </div>
   );
 }
