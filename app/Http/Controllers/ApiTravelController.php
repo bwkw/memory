@@ -70,6 +70,8 @@ class ApiTravelController extends Controller
      */
     public function destroy(Travel $travel)
     {
-        //
+        $travel->delete();
+        $travels = Travel::all();
+        return response()->json($travels, 200);
     }
 }
