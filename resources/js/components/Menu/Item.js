@@ -24,8 +24,8 @@ export default function Item() {
   return (
     <List>
       { menus.map((menu) => (
-        <Link to={ menu.url }>
-          <ListItem button key={ menu.menu }>
+        <Link to={ menu.url } key={ menu.menu }>
+          <ListItem>
             <ListItemIcon>
               { menu.icon }
             </ListItemIcon>
