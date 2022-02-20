@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@mui/material/IconButton';

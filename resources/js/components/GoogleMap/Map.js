@@ -6,7 +6,6 @@ const containerStyle = {
   height: "400px",
 };
 
-
 export default function Map(props) {
   const lat = props.lat;
   const lng = props.lng;
