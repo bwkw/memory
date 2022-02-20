@@ -21,7 +21,7 @@ export default function Basic(props) {
     mode: "onChange",
   });
   
-  function Geocode(data) {
+  const Geocode = (data) => {
     GoogleGeocode.setApiKey(process.env.MIX_GOOGLE_MAP_API_KEY);
     GoogleGeocode.fromAddress(data.name).then(
       response => {
@@ -32,7 +32,7 @@ export default function Basic(props) {
         data["lng"] = resLng;
       },
     );
-  }
+  };
   
   const onSubmit = (data) => {
     props.handleNext();
@@ -40,11 +40,12 @@ export default function Basic(props) {
     setCurrentState(data);
   };
   
+  
   return (
     <TableContainer component={Paper}>
       <Grid container>
-        <Grid xs={1} sm={2} />
-        <Grid xs={10} sm={8}>
+        <Grid xs={1} sm={2} md={3} />
+        <Grid xs={10} sm={8} md={6}>
           <Box m={5} />
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller                      
@@ -61,25 +62,32 @@ export default function Basic(props) {
                     style: {fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP']},
                     shrink:true,
                   }}
-                  sx={{ width: 220 }}
                   {...register("shooting_date", {
                     required: { value: true, message: "Please enter a shooting_date" }
                   })}
                 />
               )}
             />
-            {errors.shooting_date && <p style={{ color: "red", fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP'] }}>{errors.shooting_date.message}</p>}
-            <br/>
+            {errors.shooting_date && <p style={{ color: "red", margin: 0, fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP'] }}>{errors.shooting_date.message}</p>}
+            
+            <Box
+              m={3}
+            >
+            </Box>
+            
             <Controller
+              m={0}
               control={control}
               name="name"
               render={({ field }) => (
                 <TextField
                   {...field}
                   label="name"
-                  margin="normal"
                   inputProps={{ style: {fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP']} }}  
-                  placeholder="name"
+                  InputLabelProps={{ 
+                    style: {fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP']},
+                    shrink:true,
+                  }}
                   {...register("name", {
                     required: { value: true, message: "Please enter a name" },
                     maxLength: { value: 10, message: "The maximum value entered is 10" }
@@ -87,12 +95,11 @@ export default function Basic(props) {
                 />
               )}
             />
-            {errors.name && <p style={{ color: "red", fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP'] }}>{errors.name.message}</p>}
-            <br/>
-            <br/>
+            {errors.name && <p mb={0} style={{ color: "red", margin: 0, fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP'] }}>{errors.name.message}</p>}
+            
             <Box
-              mt={2}
-              mb={4}
+              mt={5}
+              mb={5}
             >
               <Button
                 variant="contained"

@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Box from '@mui/material/Box';
@@ -62,15 +63,18 @@ export default function Confirm(props) {
       .post("/api/travels", data, { headers })
       .then(res => {
         console.log(res);
-    });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   
   return (
     <TableContainer component={Paper}>
       <Grid container>
-        <Grid sm={2} />
-        <Grid lg={8} sm={8} spacing={10}>
+        <Grid xs={1} sm={2} md={3} />
+        <Grid xs={10} sm={8} md={6}>
         <Box m={3} />
           <Table aria-label="Customer Input Data">
             <TableHead>
@@ -95,7 +99,11 @@ export default function Confirm(props) {
           <br />
           <label htmlFor="upload-button">
             <input accept=".png, .jpg, .jpeg" id="upload-button" type="file" onChange={ changeImage } hidden />
-            <Button variant="contained" component="span" style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}>
+            <Button
+              variant="contained"
+              component="span"
+              style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
+            >
               upload
             </Button>
             <Box ml={3} component="span"/>
@@ -104,10 +112,22 @@ export default function Confirm(props) {
       
           <Box mt={2} mb={4}>
             <Stack spacing={2} direction="row">
-              <Button variant="contained" color="primary" style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }} onClick={props.handleBack}>
+              <Button 
+                variant="contained" 
+                color="primary" 
+                style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
+                onClick={props.handleBack}
+              >
                 back
               </Button>
-              <Button variant="contained" color="secondary" style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }} onClick={onSubmit}>
+              <Button
+                variant="contained"
+                color="secondary"
+                style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
+                onClick={onSubmit}
+                component={Link}
+                to="/travels"
+              >
                 send
               </Button>
             </Stack>  
