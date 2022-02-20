@@ -9,6 +9,9 @@ export const theme = createTheme({
     fontSize: 18
   },
   palette: {
+    primary: {
+      main: "#263238"
+    },
     secondary: {
       main: "#546e7a"
     }
