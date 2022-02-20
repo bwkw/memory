@@ -12,7 +12,7 @@ export default function BaseCard(props) {
   return (
     <Grid container direction="row" spacing={4} columns={{ md: 11 }} justifyContent="center" alignItems="center">
       {props.items.map((item) => (
-        <Grid item xs={8} md={3}>
+        <Grid key={item.id} item xs={8} md={3}>
           <Card>
             <CardMedia
               component="img"
