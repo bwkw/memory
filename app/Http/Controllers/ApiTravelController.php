@@ -36,7 +36,7 @@ class ApiTravelController extends Controller
         $travel->image_path = Storage::disk('s3')->url($path);
         $travel->save();
         
-        return redirect("/travels/create");
+        return response()->json($travel, 200);
     }
 
     /**
