@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
 
-export default function Create(props) {
+export default function Back(props) {
   return (
     <Button
       variant="contained"
@@ -11,7 +11,7 @@ export default function Create(props) {
       component={Link}
       to={props.url}
     >
-      Create
+      Back
     </Button>
   );
 }
