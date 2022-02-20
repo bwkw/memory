@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import { useState, createContext } from 'react';
 
 import Basic from '@/components/Form/Basic';
 import Confirm from '@/components/Form/Confirm';
@@ -10,8 +10,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 
 function getSteps() {
   return [
-    '入力項目',
-    '入力確認'
+    "入力項目",
+    "入力確認"
   ];
 }
 
@@ -22,7 +22,7 @@ function getStepContent(stepIndex, handleNext, handleBack) {
     case 1:
       return <Confirm handleBack={handleBack}/>;
     default:
-      return 'Unknown stepIndex';
+      return "Unknown stepIndex";
   }
 }
 
@@ -42,8 +42,8 @@ export default function AllForm() {
   
   return (
     <Grid container>
-      <Grid xs={1} sm={2} />
-      <Grid xs={10} sm={8}>
+      <Grid xs={1} sm={2} md={3} />
+      <Grid xs={10} sm={8} md={6}>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
