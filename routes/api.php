@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ApiTravelController;
+use App\Http\Controllers\ApiFoodController;
 use App\Http\Controllers\ApiSceneryController;
+use App\Http\Controllers\ApiTravelController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +23,5 @@ Route::group(['middleware' => 'api'], function(){
     Route::post('/travels', [ApiTravelController::class, 'store'])->name('api_travel_store');
     Route::get('/travels/{travel}', [ApiTravelController::class, 'show'])->name('api_travel_show');
     Route::get('/sceneries', [ApiSceneryController::class, 'index'])->name('api_scenery_index');
+    Route::get('/foods', [ApiFoodController::class, 'index'])->name('api_food_index');
 });
