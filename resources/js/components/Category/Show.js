@@ -21,6 +21,7 @@ export default function Show(props) {
       });
 	 },[]);
 
+
   return(
 		<Map lat={data.latitude} lng={data.longitude} />
 	);
