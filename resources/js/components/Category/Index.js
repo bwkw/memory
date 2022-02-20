@@ -39,7 +39,7 @@ export default function Index(props) {
       
       <br />
       
-      { datasFlag && <BaseCard items={datas} /> }
+      { datasFlag && <BaseCard datas={datas} setDatas={setDatas}/> }
     </div>
   );
 }
