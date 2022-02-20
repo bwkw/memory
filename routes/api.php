@@ -22,6 +22,7 @@ Route::group(['middleware' => 'api'], function(){
     Route::get('/travels', [ApiTravelController::class, 'index'])->name('api_travel_index');
     Route::post('/travels', [ApiTravelController::class, 'store'])->name('api_travel_store');
     Route::get('/travels/{travel}', [ApiTravelController::class, 'show'])->name('api_travel_show');
+    Route::post('/travels/{travel}/delete', [ApiTravelController::class, 'destroy'])->name('api_travel_delete');
     Route::get('/sceneries', [ApiSceneryController::class, 'index'])->name('api_scenery_index');
     Route::get('/foods', [ApiFoodController::class, 'index'])->name('api_food_index');
 });
