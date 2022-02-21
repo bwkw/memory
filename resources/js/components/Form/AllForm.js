@@ -35,13 +35,13 @@ export default function AllForm(props) {
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
   
-  console.log(currentState);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+  
   
   return (
     <Grid container>
