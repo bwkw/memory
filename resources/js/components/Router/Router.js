@@ -1,9 +1,10 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import CategoryCreate from '@/components/Category/Create';
+import CategoryEdit from '@/components/Category/Edit';
 import CategoryIndex from '@/components/Category/Index';
 import CategoryShow from '@/components/Category/Show';
-import CategoryCreate from '@/components/Category/Create';
 import HomeIndex from '@/components/Home/Index';
 import HeaderBar from '@/components/Bar/HeaderBar';
 import { theme } from '@/theme';
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/travels" element={<CategoryIndex category="travels" />} />
       <Route path="/travels/create" element={<CategoryCreate category="travels" />} />
       <Route path="/travels/:id" element={<CategoryShow category="travels" />} />
+      <Route path="/travels/:id/edit" element={<CategoryEdit category="travels" />} />
       <Route path="/foods" element={<CategoryIndex category="foods" />} />
       <Route path="/foods/create" element={<CategoryCreate category="foods" />} />
       <Route path="/foods/:id" element={<CategoryShow category="foods" />} />

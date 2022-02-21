@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { createContext, useState } from 'react';
 
 import Basic from '@/components/Form/Basic';
 import Confirm from '@/components/Form/Confirm';
@@ -18,9 +18,9 @@ function getSteps() {
 function getStepContent(stepIndex, handleNext, handleBack) {
   switch (stepIndex) {
     case 0:
-      return <Basic handleNext={handleNext}/>;
+      return <Basic handleNext={handleNext} />;
     case 1:
-      return <Confirm handleBack={handleBack}/>;
+      return <Confirm handleBack={handleBack} />;
     default:
       return "Unknown stepIndex";
   }
@@ -28,11 +28,14 @@ function getStepContent(stepIndex, handleNext, handleBack) {
 
 export const UserInputData = createContext();
 
-export default function AllForm() {
-  const [currentState, setCurrentState] = useState();
+export default function AllForm(props) {
+  console.log(props.shooting_date);
+  const [currentState, setCurrentState] = useState({name: props.name, shooting_date: props.shooting_date});
   const value = {currentState, setCurrentState};
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
+  
+  console.log(currentState);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };

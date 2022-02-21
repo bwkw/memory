@@ -21,9 +21,9 @@ export default function BaseCard(props) {
       .catch(() => {
         console.log('通信に失敗しました');
       });
-	  };
-  
-  
+	};
+	
+	
   return (
     <Grid container direction="row" spacing={4} columns={{ md: 11 }} justifyContent="center" alignItems="center">
       {props.datas.map((data) => (
@@ -76,8 +76,10 @@ export default function BaseCard(props) {
                     variant="contained" 
                     color="secondary" 
                     style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
+                    component={Link}
+                    to={`/travels/${data.id}/edit`}
                   >
-                    Update
+                    Edit
                   </Button>
                 </Grid>
                 <Grid item xs={1} />
