@@ -59,7 +59,16 @@ class ApiTravelController extends Controller
      */
     public function update(Request $request, Travel $travel)
     {
-        //
+        $travel->name = $request->name;
+        $travel->latitude = $request->latitude;
+        $travel->longitude = $request->longitude;
+        $travel->shooting_date = $request->shooting_date;
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('travels', $image, 'public');
+        $travel->image_path = Storage::disk('s3')->url($path);
+        $travel->save();
+        
+        return response()->json($travel, 200);
     }
 
     /**
