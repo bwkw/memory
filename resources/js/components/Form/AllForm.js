@@ -29,8 +29,7 @@ function getStepContent(stepIndex, handleNext, handleBack) {
 export const UserInputData = createContext();
 
 export default function AllForm(props) {
-  console.log(props.shooting_date);
-  const [currentState, setCurrentState] = useState({name: props.name, shooting_date: props.shooting_date});
+  const [currentState, setCurrentState] = useState({id: props.id, name: props.name, shooting_date: props.shooting_date});
   const value = {currentState, setCurrentState};
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();

@@ -37,6 +37,7 @@ export default function Basic(props) {
   const onSubmit = (data) => {
     props.handleNext();
     Geocode(data);
+    data["id"] = currentState.id;
     setCurrentState(data);
   };
   

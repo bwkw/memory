@@ -49,7 +49,7 @@ export default function Confirm(props) {
     setImageName(file.name);
   };
   
-  const onSubmit = () => {
+  const onSubmit = (id) => {
     const data = new FormData();
     data.append('name', currentState.name);
     data.append('latitude', currentState.lat);
@@ -59,6 +59,16 @@ export default function Confirm(props) {
 
     const headers = { "content-type": "multipart/form-data" };
     
+    if (id) {
+      axios
+      .post(`/api/travels/${id}/edit`, data, { headers })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    } else {
     axios
       .post("/api/travels", data, { headers })
       .then(res => {
@@ -67,6 +77,7 @@ export default function Confirm(props) {
       .catch(error => {
         console.log(error);
       });
+    }
   };
 
   
@@ -124,7 +135,7 @@ export default function Confirm(props) {
                 variant="contained"
                 color="secondary"
                 style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
-                onClick={onSubmit}
+                onClick={() => onSubmit(currentState.id)}
                 component={Link}
                 to="/travels"
               >
