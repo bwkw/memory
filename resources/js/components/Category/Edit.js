@@ -21,12 +21,12 @@ export default function Edit(props) {
       .catch(() => {
         console.log('通信に失敗しました');
       });
-	 },[props.category]);
+	 },[]);
 	 
 	 
   return(
     <div>
-      { datasFlag && <AllForm name={data.name} shooting_date={data.shooting_date} /> }
+      { datasFlag && <AllForm id={data.id} name={data.name} shooting_date={data.shooting_date} /> }
     </div>
   );
 }
