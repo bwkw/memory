@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Back from '@/components/Button/Back';
 import BaseCard from '@/components/Card/BaseCard';
+import Circular from '@/components/Circular/Circular';
 import Create from '@/components/Button/Create';
 import Stack from '@mui/material/Stack';
 
@@ -31,6 +32,7 @@ export default function Index(props) {
 
 
   return(
+  	
   	<div>
   		<Stack direction="row" spacing={3} justifyContent="center">
   			<Back url="/" />
@@ -39,7 +41,8 @@ export default function Index(props) {
       
       <br />
       
-      { datasFlag && <BaseCard datas={datas} setDatas={setDatas}/> }
+      { datasFlag && <BaseCard datas={datas} setDatas={setDatas} /> }
+      { !datasFlag && <Circular /> }
     </div>
   );
 }
