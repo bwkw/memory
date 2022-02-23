@@ -41,6 +41,7 @@
         "@mui/styles": "^5.3.0",
         "@react-google-maps/api": "^2.7.0",
         "date-fns": "^2.28.0",
+        "google-map-react": "^2.1.10",
         "material-ui": "^0.20.2",
         "react-geocode": "^0.2.3",
         "react-hook-form": "^7.25.1",
