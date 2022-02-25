@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 export default function Circular() {
   return (
     <Grid container direction="row" justifyContent="center">
-      <CircularProgress color="inherit" size="200px" />
+      <CircularProgress color="inherit" size="130px" />
     </Grid>
   );
 }

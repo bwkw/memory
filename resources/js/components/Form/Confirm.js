@@ -5,6 +5,7 @@ import axios from 'axios';
 import Box from '@mui/material/Box';
 import { Button } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
+import LinearLoading from '@/components/Loading/Linear';
 import Paper from '@material-ui/core/Paper';
 import Stack from '@mui/material/Stack';
 import Table from '@material-ui/core/Table';
@@ -17,6 +18,7 @@ import { UserInputData } from '@/components/Form/AllForm';
 
 
 export default function Confirm(props) {
+  const [loadingFlag, setLoadingFlag] = useState(false);
   const { currentState } = useContext(UserInputData);
   const navigate = useNavigate();
   const [image, setImage] = useState();
@@ -51,6 +53,7 @@ export default function Confirm(props) {
   };
   
   const onSubmit = (id) => {
+    setLoadingFlag(true);
     const data = new FormData();
     data.append('name', currentState.name);
     data.append('latitude', currentState.lat);
@@ -121,6 +124,8 @@ export default function Confirm(props) {
             <Box ml={3} component="span"/>
             { image_name }
           </label>
+          
+          { (loadingFlag) && <LinearLoading /> }
       
           <Box mt={2} mb={4}>
             <Stack spacing={2} direction="row">
