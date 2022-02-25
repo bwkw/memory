@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Box from '@mui/material/Box';
@@ -18,6 +18,7 @@ import { UserInputData } from '@/components/Form/AllForm';
 
 export default function Confirm(props) {
   const { currentState } = useContext(UserInputData);
+  const navigate = useNavigate();
   const [image, setImage] = useState();
   const [image_name, setImageName] = useState();
   const inputDataLists = [];
@@ -63,7 +64,7 @@ export default function Confirm(props) {
       axios
       .post(`/api/travels/${id}/edit`, data, { headers })
       .then(res => {
-        console.log(res);
+        navigate("/travels");
       })
       .catch(error => {
         console.log(error);
@@ -72,7 +73,7 @@ export default function Confirm(props) {
     axios
       .post("/api/travels", data, { headers })
       .then(res => {
-        console.log(res);
+        navigate("/travels");
       })
       .catch(error => {
         console.log(error);
@@ -136,8 +137,6 @@ export default function Confirm(props) {
                 color="secondary"
                 style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
                 onClick={() => onSubmit(currentState.id)}
-                component={Link}
-                to="/travels"
               >
                 send
               </Button>
