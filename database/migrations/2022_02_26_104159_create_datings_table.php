@@ -20,6 +20,7 @@ class CreateDatingsTable extends Migration
             $table->float('longitude', 10, 7);
             $table->date('shooting_date');
             $table->string('image_path', 300)->nullable();
+            $table->foreignId('schedule_id')->constrained();
             $table->timestamps();
         });
     }

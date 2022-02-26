@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFoodTable extends Migration
+class CreateSchedulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateFoodTable extends Migration
      */
     public function up()
     {
-        Schema::create('food', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->float('latitude', 10, 7);
-            $table->float('longitude', 10, 7);
-            $table->date('shooting_date');
-            $table->string('image_path', 300)->nullable();
+            $table->datetime('beginning_datetime');
+            $table->datetime('ending_datetime');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateFoodTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('food');
+        Schema::dropIfExists('schedules');
     }
 }

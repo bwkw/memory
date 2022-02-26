@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -7,6 +9,20 @@ import Grid from '@mui/material/Grid';
 
 
 export default function Calendar() {
+  const [events, setEvents] = useState([]);
+  
+  useEffect(() => {
+    axios
+      .get("/api/schedules")
+      .then(response => {
+		  	const data = response.data;
+	  	  setEvents(data);
+		  })
+		  .catch(() => {
+		    console.log("通信に失敗しました");
+		  });
+  }, []);
+  
   return (
     <Grid
       item
@@ -21,6 +37,7 @@ export default function Calendar() {
           initialView="timeGridWeek"
           slotDuration="00:30:00"
           selectable={true}
+          allDaySlot={true}
           businessHours={{
             daysOfWeek: [1, 2, 3, 4, 5],
             startTime: '00:00',
@@ -36,6 +53,7 @@ export default function Calendar() {
             center: 'prev next today',
             end: 'dayGridMonth timeGridWeek'
           }}
+          events={events}
         />
       </Grid>
     </Grid>
