@@ -33,8 +33,8 @@ export default function Calendar() {
           }}
           headerToolbar={{
             start: 'title',
-            center: 'prev, next, today',
-            end: 'dayGridMonth,timeGridWeek'
+            center: 'prev next today',
+            end: 'dayGridMonth timeGridWeek'
           }}
         />
       </Grid>
