@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import Calendar from '@/components/Calendar/Calendar';
 import CategoryCreate from '@/components/Category/Create';
 import CategoryEdit from '@/components/Category/Edit';
 import CategoryIndex from '@/components/Category/Index';
@@ -15,6 +16,7 @@ function Router() {
   const Body = (
     <Routes>
       <Route path="/" element={<HomeIndex />} />
+      <Route path="/calendar" element={<Calendar />} />
       <Route path="/datings" element={<CategoryIndex category="datings" />} />
       <Route path="/datings/create" element={<CategoryCreate category="datings" />} />
       <Route path="/datings/:id" element={<CategoryShow category="datings" />} />

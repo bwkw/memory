@@ -25,7 +25,8 @@ export default function BaseCard(props) {
 	
 	
   return (
-    <Grid 
+    <Grid
+      item
       container
       columns={{ xs: 12, sm: 12, md: 12, lg: 11 }}
       direction="row"
@@ -53,6 +54,7 @@ export default function BaseCard(props) {
             </CardContent>
             <CardActions>
               <Grid
+                item
                 container
                 columns={{ xs: 12, lg: 12 }}
                 direction="row"
