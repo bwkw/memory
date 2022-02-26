@@ -11,17 +11,17 @@ import Grid from '@mui/material/Grid';
 export default function Calendar() {
   const [events, setEvents] = useState([]);
   
-  useEffect(() => {
-    axios
-      .get("/api/schedules")
-      .then(response => {
-		  	const data = response.data;
-	  	  setEvents(data);
-		  })
-		  .catch(() => {
-		    console.log("通信に失敗しました");
-		  });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/schedules")
+  //     .then(response => {
+		//   	const data = response.data;
+	 // 	  setEvents(data);
+		//   })
+		//   .catch(() => {
+		//     console.log("通信に失敗しました");
+		//   });
+  // }, []);
   
   return (
     <Grid
@@ -53,7 +53,7 @@ export default function Calendar() {
             center: 'prev next today',
             end: 'dayGridMonth timeGridWeek'
           }}
-          events={events}
+          events={[{ title: "event 1", start: "2022-02-26", end: "2022-02-28"}]}
         />
       </Grid>
     </Grid>

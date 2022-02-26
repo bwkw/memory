@@ -15,9 +15,9 @@ class ScheduleSeeder extends Seeder
     public function run()
     {
         DB::table('schedules')->insert([
-            'name' => '岐阜旅行',
-            'beginning_datetime' => date('2021-09-02'),
-            'ending_datetime' => date('2021-09-03'),
+            'title' => '岐阜旅行',
+            'start' => date('2021-09-02'),
+            'end' => date('2021-09-03'),
         ]);
     }
 }
