@@ -21,6 +21,7 @@ class CreateTravelTable extends Migration
             $table->date('shooting_date');
             $table->string('image_path', 300)->nullable();
             $table->foreignId('schedule_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
