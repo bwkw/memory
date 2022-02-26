@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiDatingController;
 use App\Http\Controllers\ApiFoodController;
 use App\Http\Controllers\ApiSceneryController;
+use App\Http\Controllers\ApiScheduleController;
 use App\Http\Controllers\ApiTravelController;
 
 use Illuminate\Http\Request;
@@ -50,3 +51,5 @@ Route::group(['prefix' => 'travels', 'middleware' => 'api'], function(){
     Route::post('/{travel}/delete', [ApiTravelController::class, 'destroy'])->name('api_travel_delete');
     Route::post('/{travel}/edit', [ApiTravelController::class, 'update'])->name('api_travel_update');
 });
+
+Route::get('schedules', [ApiScheduleController::class, 'index'])->name('api_travel_store');
