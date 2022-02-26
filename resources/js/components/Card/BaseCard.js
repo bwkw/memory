@@ -25,9 +25,15 @@ export default function BaseCard(props) {
 	
 	
   return (
-    <Grid container direction="row" spacing={4} columns={{ md: 11 }} justifyContent="center" alignItems="center">
+    <Grid 
+      container
+      columns={{ xs: 12, sm: 12, md: 12, lg: 11 }}
+      direction="row"
+      spacing={4}
+      justifyContent="center"
+    >
       {props.datas.map((data) => (
-        <Grid key={data.id} item xs={8} md={3}>
+        <Grid key={data.id} item xs={8} sm={7} md={5} lg={3}>
           <Card>
             <CardMedia
               component="img"
@@ -48,18 +54,17 @@ export default function BaseCard(props) {
             <CardActions>
               <Grid
                 container
-                columns={{ xs: 12 }}
-                spacing={3}
+                columns={{ xs: 12, lg: 12 }}
                 direction="row"
                 alignItems="center"
               >
-                <Grid item xs={0} md={1}/>
+                <Grid item xs={1} />
                 <Grid item xs={1}>
                   <Link to={`/travels/${data.id}`}>
                     Details
                   </Link>
                 </Grid>
-                <Grid item xs={1} md={2} lg={3}/>
+                <Grid item xs={4} lg={3} />
                 <Grid item xs={2}>
                   <Button 
                     variant="contained" 
@@ -70,7 +75,7 @@ export default function BaseCard(props) {
                     Delete
                   </Button>
                 </Grid>
-                <Grid item xs={1} lg={2}/>
+                <Grid item xs={1} lg={2} />
                 <Grid item xs={2}>
                   <Button 
                     variant="contained" 
