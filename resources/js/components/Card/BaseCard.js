@@ -34,7 +34,7 @@ export default function BaseCard(props) {
       justifyContent="center"
     >
       {props.datas.map((data) => (
-        <Grid key={data.id} item xs={8} sm={7} md={5} lg={3}>
+        <Grid key={data.id} item xs={10} sm={7} md={5} lg={3}>
           <Card>
             <CardMedia
               component="img"
@@ -44,13 +44,46 @@ export default function BaseCard(props) {
               alt={data.name}
             />
             <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
-                {data.name}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
-              </Typography>
+              <Grid
+                item
+                container
+                columns={{ xs: 12 }}
+                direction="row"
+                alignItems="center"
+              >
+                <Grid item xs={1} />
+                <Grid item xs={10}>
+                  <Typography variant="h6" component="div">
+                    {data.name}
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid
+                item
+                container
+                columns={{ xs: 12, sm: 10 }}
+                direction="row"
+                alignItems="center"
+                mt={1}
+              >
+                <Grid item xs={1} sm={1} />
+                <Grid item xs={4} sm={3}>
+                  <Typography style={{fontSize: 16}}>
+                    <Link to={`/scedules/${data.schedule.id}`} style={{ color: 'gray' }}>
+                      {data.schedule.title}
+                    </Link>
+                  </Typography>
+                </Grid>
+                <Grid item xs={1} sm={1}/>
+                <Grid item xs={6} sm={5}>
+                  <Typography style={{fontSize: 14}}>
+                    <Link to={`/shootings/${data.shooting_date}`} style={{ color: 'black' }}>
+                      {data.shooting_date}
+                    </Link>
+                    に撮影
+                  </Typography>
+                </Grid>
+              </Grid>
             </CardContent>
             <CardActions>
               <Grid
@@ -66,8 +99,8 @@ export default function BaseCard(props) {
                     Details
                   </Link>
                 </Grid>
-                <Grid item xs={4} lg={3} />
-                <Grid item xs={2}>
+                <Grid item xs={2} lg={3} />
+                <Grid item xs={3} lg={2}>
                   <Button 
                     variant="contained" 
                     color="primary" 
@@ -78,7 +111,7 @@ export default function BaseCard(props) {
                   </Button>
                 </Grid>
                 <Grid item xs={1} lg={2} />
-                <Grid item xs={2}>
+                <Grid item xs={3} lg={2}>
                   <Button 
                     variant="contained" 
                     color="secondary" 

@@ -13,9 +13,9 @@ class ApiTravelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Travel $travel)
     {
-        $travels = Travel::all();
+        $travels = $travel->getAllTravels();
         return response()->json($travels, 200);
     }
 

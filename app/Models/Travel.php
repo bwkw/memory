@@ -15,4 +15,14 @@ class Travel extends Model
         'created_at',
         'updated_at'
     ];
+    
+    public function schedule()
+    {
+        return $this->belongsTo(Schedule::class);
+    }
+    
+    public function getAllTravels()
+    {
+        return Travel::with('schedule')->get();
+    }
 }
