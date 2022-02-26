@@ -38,6 +38,7 @@ export default function Basic(props) {
     props.handleNext();
     Geocode(data);
     data["id"] = currentState.id;
+    data["category"] = currentState.category;
     setCurrentState(data);
   };
   

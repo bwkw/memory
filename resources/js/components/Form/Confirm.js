@@ -65,18 +65,18 @@ export default function Confirm(props) {
     
     if (id) {
       axios
-      .post(`/api/travels/${id}/edit`, data, { headers })
+      .post(`/api/${currentState.category}/${id}/edit`, data, { headers })
       .then(res => {
-        navigate("/travels");
+        navigate(`/${currentState.category}`);
       })
       .catch(error => {
         console.log(error);
       });
     } else {
     axios
-      .post("/api/travels", data, { headers })
+      .post(`/api/${currentState.category}`, data, { headers })
       .then(res => {
-        navigate("/travels");
+        navigate(`/${currentState.category}`);
       })
       .catch(error => {
         console.log(error);

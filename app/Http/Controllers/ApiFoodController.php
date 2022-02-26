@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ApiFoodController extends Controller
 {
@@ -24,9 +25,18 @@ class ApiFoodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Food $food, Request $request)
     {
-        //
+        $food->name = $request->name;
+        $food->latitude = $request->latitude;
+        $food->longitude = $request->longitude;
+        $food->shooting_date = $request->shooting_date;
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('foods', $image, 'public');
+        $food->image_path = Storage::disk('s3')->url($path);
+        $food->save();
+        
+        return response()->json($food, 200);
     }
 
     /**
@@ -37,7 +47,7 @@ class ApiFoodController extends Controller
      */
     public function show(Food $food)
     {
-        //
+        return response()->json($food, 200);
     }
 
     /**
@@ -47,9 +57,18 @@ class ApiFoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Food $food)
+    public function update(Food $food, Request $request)
     {
-        //
+        $food->name = $request->name;
+        $food->latitude = $request->latitude;
+        $food->longitude = $request->longitude;
+        $food->shooting_date = $request->shooting_date;
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('foods', $image, 'public');
+        $food->image_path = Storage::disk('s3')->url($path);
+        $food->save();
+        
+        return response()->json($food, 200);
     }
 
     /**
@@ -60,6 +79,8 @@ class ApiFoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        //
+        $food->delete();
+        $foods = food::all();
+        return response()->json($foods, 200);
     }
 }

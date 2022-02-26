@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSceneriesTable extends Migration
+class CreateDatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSceneriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sceneries', function (Blueprint $table) {
+        Schema::create('datings', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
             $table->float('latitude', 10, 7);
@@ -31,6 +31,6 @@ class CreateSceneriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sceneries');
+        Schema::dropIfExists('datings');
     }
 }

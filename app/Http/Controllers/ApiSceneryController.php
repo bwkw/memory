@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Scenery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ApiSceneryController extends Controller
 {
@@ -24,9 +25,18 @@ class ApiSceneryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Scenery $scenery)
     {
-        //
+        $scenery->name = $request->name;
+        $scenery->latitude = $request->latitude;
+        $scenery->longitude = $request->longitude;
+        $scenery->shooting_date = $request->shooting_date;
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('sceneries', $image, 'public');
+        $scenery->image_path = Storage::disk('s3')->url($path);
+        $scenery->save();
+        
+        return response()->json($scenery, 200);
     }
 
     /**
@@ -37,7 +47,7 @@ class ApiSceneryController extends Controller
      */
     public function show(Scenery $scenery)
     {
-        //
+        return response()->json($scenery, 200);
     }
 
     /**
@@ -49,7 +59,16 @@ class ApiSceneryController extends Controller
      */
     public function update(Request $request, Scenery $scenery)
     {
-        //
+        $scenery->name = $request->name;
+        $scenery->latitude = $request->latitude;
+        $scenery->longitude = $request->longitude;
+        $scenery->shooting_date = $request->shooting_date;
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('sceneries', $image, 'public');
+        $scenery->image_path = Storage::disk('s3')->url($path);
+        $scenery->save();
+        
+        return response()->json($scenery, 200);
     }
 
     /**
@@ -60,6 +79,8 @@ class ApiSceneryController extends Controller
      */
     public function destroy(Scenery $scenery)
     {
-        //
+        $scenery->delete();
+        $sceneries = Scenery::all();
+        return response()->json($sceneries, 200);
     }
 }

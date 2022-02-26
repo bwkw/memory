@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Travel;
+use App\Models\Food;
 use Illuminate\Http\Request;
 
-class TravelController extends Controller
+class FoodController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Travel $travel)
+    public function index()
     {
         //
     }
@@ -33,7 +33,7 @@ class TravelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Travel $travel)
+    public function store(Request $request)
     {
         //
     }
@@ -41,10 +41,10 @@ class TravelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Travel  $travel
+     * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function show(Travel $travel)
+    public function show(Food $food)
     {
         //
     }
@@ -52,10 +52,10 @@ class TravelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Travel  $travel
+     * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function edit(Travel $travel)
+    public function edit(Food $food)
     {
         //
     }
@@ -64,10 +64,10 @@ class TravelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Travel  $travel
+     * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Travel $travel)
+    public function update(Request $request, Food $food)
     {
         //
     }
@@ -75,10 +75,10 @@ class TravelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Travel  $travel
+     * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Travel $travel)
+    public function destroy(Food $food)
     {
         //
     }

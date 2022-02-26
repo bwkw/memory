@@ -41,7 +41,7 @@ export default function Index(props) {
       
       <br />
       
-      { (datasFlag) && <BaseCard datas={datas} setDatas={setDatas} /> }
+      { (datasFlag) && <BaseCard category={props.category} datas={datas} setDatas={setDatas} /> }
       { (!datasFlag) && <Circular /> }
     </div>
   );

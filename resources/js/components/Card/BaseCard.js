@@ -14,7 +14,7 @@ export default function BaseCard(props) {
   
   const onDelete = (id) => {
     axios
-      .post(`/api/travels/${id}/delete`)
+      .post(`/api/${props.category}/${id}/delete`)
       .then(response => {
         props.setDatas(response.data);
       })
@@ -60,7 +60,7 @@ export default function BaseCard(props) {
               >
                 <Grid item xs={1} />
                 <Grid item xs={1}>
-                  <Link to={`/travels/${data.id}`}>
+                  <Link to={`/${props.category}/${data.id}`}>
                     Details
                   </Link>
                 </Grid>
@@ -82,7 +82,7 @@ export default function BaseCard(props) {
                     color="secondary" 
                     style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
                     component={Link}
-                    to={`/travels/${data.id}/edit`}
+                    to={`/${props.category}/${data.id}/edit`}
                   >
                     Edit
                   </Button>
