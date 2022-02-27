@@ -23,6 +23,27 @@ export default function Calendar() {
 		  });
   }, []);
   
+  // カレンダーの空欄クリック時のイベント登録フォーム表示
+  const handleSelect = (selectInfo) => {
+    const start = new Date(selectInfo.start);
+    const end = new Date(selectInfo.end);
+    start.setHours(start.getHours());
+    end.setHours(end.getHours());
+    
+    // 登録モーダル表示
+
+  };
+  
+  // カレンダーの予定クリック時のイベント編集フォーム表示
+  const handleEvent = (eventInfo) => {
+    const event = eventInfo.event;
+    const title = event.title
+    const start = event.start
+    const end = event.end
+    
+    // 編集モーダル表示
+  };
+  
   return (
     <Grid
       item
@@ -36,7 +57,6 @@ export default function Calendar() {
           plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
           initialView="timeGridWeek"
           slotDuration="00:30:00"
-          selectable={true}
           allDaySlot={true}
           businessHours={{
             daysOfWeek: [1, 2, 3, 4, 5],
@@ -53,7 +73,10 @@ export default function Calendar() {
             center: 'prev next today',
             end: 'dayGridMonth timeGridWeek'
           }}
+          selectable={true}
+          select={handleSelect}
           events={events}
+          eventClick={handleEvent}
         />
       </Grid>
     </Grid>
