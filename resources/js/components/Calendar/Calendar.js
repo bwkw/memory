@@ -16,6 +16,7 @@ export default function Calendar() {
   const [end, setEnd] = useState();
   const [selectFlag, setSelectFlag] = useState(false);
   const [eventFlag, setEventFlag] = useState(false);
+  const [inView, setInView] = useState(true);
   
   useEffect(() => {
     axios
@@ -38,6 +39,7 @@ export default function Calendar() {
     
     // 登録モーダル表示用にselectFlagをtrueに
     setSelectFlag(true);
+    setInView(true);
   };
   
   // カレンダーの予定クリック時のイベント編集フォーム表示
@@ -47,8 +49,9 @@ export default function Calendar() {
     setStart(event.start);
     setEnd(event.end);
     
-    // 編集モーダル表示
+    // 編集モーダル表示用にeventFlagをtrueに
     setEventFlag(true);
+    setInView(true);
   };
   
   return (
@@ -89,7 +92,7 @@ export default function Calendar() {
         </Grid>
       </Grid>
       
-      { selectFlag && <ModalForm mode="create" start={start} end={end} /> }
+      { (selectFlag && inView) && <ModalForm mode="create" start={start} end={end} inView={inView} setInView={setInView} /> }
       { eventFlag && <ModalForm mode="edit" title={title} start={start} end={end} /> }
     </div>
   );
