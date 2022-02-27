@@ -18,8 +18,8 @@ class CreateSchedulesTable extends Migration
             $table->string('title', 100);
             $table->datetime('start');
             $table->datetime('end');
-            $table->timestamps();
             $table->foreignId('user_id')->constrained();
+            $table->timestamps();
         });
     }
 
