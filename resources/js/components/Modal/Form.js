@@ -29,7 +29,7 @@ const useStyles = makeStyles(() =>
       alignItems: 'center',
       zIndex: 2000,
     },
-    inView: { // cover, formを表示する時に適用するStyle。
+    inView: {
       opacity: 1,
       visibility: 'visible'
     },
@@ -40,13 +40,26 @@ export default function Form(props) {
   const classes = useStyles();
   
   return (
-    <div
-      onClick={() => props.setInView(false)}
-      className={
-        props.inView
-          ? `${classes.cover} ${classes.inView}`
-          : classes.cover
-      }
-    />
+    <div>
+      <div
+        onClick={() => props.setInView(false)}
+        className={
+          props.inView
+            ? `${classes.cover} ${classes.inView}`
+            : classes.cover
+        }
+      />
+      <div
+        className={
+          props.inView
+            ? `${classes.form} ${classes.inView}`
+            : classes.form
+        }
+      >
+        <form>
+          <div>予定を入力</div>
+        </form>
+      </div>
+    </div>
   );
 }
