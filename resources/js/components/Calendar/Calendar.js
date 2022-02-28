@@ -45,6 +45,7 @@ export default function Calendar() {
   // カレンダーの予定クリック時のイベント編集フォーム表示
   const handleEvent = (eventInfo) => {
     const event = eventInfo.event;
+    console.log(event);
     setTitle(event.title);
     setStart(event.start);
     setEnd(event.end);
@@ -93,7 +94,7 @@ export default function Calendar() {
       </Grid>
       
       { (selectFlag && inView) && <ModalForm mode="create" start={start} end={end} inView={inView} setInView={setInView} /> }
-      { eventFlag && <ModalForm mode="edit" title={title} start={start} end={end} /> }
+      { (eventFlag && inView) && <ModalForm mode="edit" title={title} start={start} end={end} inView={inView} setInView={setInView} /> }
     </div>
   );
 }

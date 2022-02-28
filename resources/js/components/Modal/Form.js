@@ -1,4 +1,4 @@
-import {createStyles, makeStyles} from "@material-ui/core/styles";
+import {createStyles, makeStyles} from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles(() =>
@@ -38,6 +38,18 @@ const useStyles = makeStyles(() =>
 
 export default function Form(props) {
   const classes = useStyles();
+  const head = () => {
+    switch(props.mode){
+      case "create":
+        return(
+          <div>予定を作成する</div>
+        );
+      case "edit":
+        return(
+          <div>予定を編集する</div>
+        );
+    }
+  };
   
   return (
     <div>
@@ -57,7 +69,7 @@ export default function Form(props) {
         }
       >
         <form>
-          <div>予定を入力</div>
+          { head() }
         </form>
       </div>
     </div>
