@@ -12,23 +12,25 @@ import Stack from '@mui/material/Stack';
 export default function Index(props) {
   const [datas, setDatas] = useState([]);
   const [datasFlag, setDatasFlag] = useState(false);
+  const [existDatasFlag, setExistDatasFlag] = useState(false);
   
 	useEffect(() => {
 		axios
 			.get(`/api/${props.category}`)
 		  .then(response => {
 		  	const data = response.data;
+		  	setDatasFlag(true);
 		  	if (data.length > 0) {
 		  	  setDatas(data);
-		      setDatasFlag(true);
+		      setExistDatasFlag(true);
 		  	} else {
-		  		setDatasFlag(false);
+		  		setExistDatasFlag(false);
 		  	}
 		  })
 		  .catch(() => {
 		    console.log("通信に失敗しました");
 		  });
-	}, [props.category, datasFlag]);
+	}, [props.category, existDatasFlag]);
 
 
   return(
@@ -40,7 +42,7 @@ export default function Index(props) {
       
       <br />
       
-      { (datasFlag) && <BaseCard category={props.category} datas={datas} setDatas={setDatas} /> }
+      { (existDatasFlag) && <BaseCard category={props.category} datas={datas} setDatas={setDatas} /> }
       { (!datasFlag) && <Circular /> }
     </div>
   );
