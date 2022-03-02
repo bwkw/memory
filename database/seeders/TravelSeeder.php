@@ -22,7 +22,7 @@ class TravelSeeder extends Seeder
                 'shooting_date' => date('2021-09-02'),
                 'image_path' => 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/travels/%E4%B8%8B%E5%91%82%E6%B8%A9%E6%B3%89.jpeg',
                 'schedule_id' => 1,
-                'user_id' => 3
+                'user_id' => 1
             ],
             [
                 'name' => 'テストデータ',
@@ -31,7 +31,7 @@ class TravelSeeder extends Seeder
                 'shooting_date' => date('2022-02-27'),
                 'image_path' => 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/travels/%E4%B8%8B%E5%91%82%E6%B8%A9%E6%B3%89.jpeg',
                 'schedule_id' => 1,
-                'user_id' => 4
+                'user_id' => 2
             ],
         ];
         

@@ -21,7 +21,7 @@ class DatingSeeder extends Seeder
             'shooting_date' => date('2021-05-25'),
             'image_path' => 'https://couple-memory.s3.ap-northeast-1.amazonaws.com/sceneries/%E6%81%8B%E4%BA%BA%E5%B2%AC.png',
             'schedule_id' => 1,
-            'user_id' => 3
+            'user_id' => 2
         ]);
     }
 }
