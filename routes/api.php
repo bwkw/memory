@@ -52,4 +52,10 @@ Route::group(['prefix' => 'travels', 'middleware' => 'api'], function(){
     Route::post('/{travel}/edit', [ApiTravelController::class, 'update'])->name('api_travel_update');
 });
 
-Route::get('schedules', [ApiScheduleController::class, 'index'])->name('api_travel_store');
+Route::group(['prefix' => 'schedules', 'middleware' => 'api'], function(){
+    Route::get('/', [ApiScheduleController::class, 'index'])->name('api_schedule_index');
+    Route::post('/', [ApiScheduleController::class, 'store'])->name('api_schedule_store');
+    // Route::get('/{travel}', [ApiTravelController::class, 'show'])->name('api_travel_show');
+    // Route::post('/{travel}/delete', [ApiTravelController::class, 'destroy'])->name('api_travel_delete');
+    // Route::post('/{travel}/edit', [ApiTravelController::class, 'update'])->name('api_travel_update');
+});

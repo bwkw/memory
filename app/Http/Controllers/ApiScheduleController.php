@@ -18,15 +18,6 @@ class ApiScheduleController extends Controller
         return response()->json($schedules, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,11 +25,15 @@ class ApiScheduleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Schedule $schedule)
     {
-        //
+        $schedule->title = $request->title;
+        $schedule->start = $request->start;
+        $schedule->end = $request->end;
+        $schedule->user_id = 1;
+        $schedule->save();
     }
-
+    
     /**
      * Display the specified resource.
      *
