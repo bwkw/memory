@@ -15,7 +15,7 @@ class ApiDatingController extends Controller
      */
     public function index(Dating $dating)
     {
-        $datings = $dating->getAllDatings();
+        $datings = $dating->getYourAllDatings(auth()->user()->id);
         return response()->json($datings, 200);
     }
 
@@ -34,6 +34,7 @@ class ApiDatingController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('datings', $image, 'public');
         $dating->image_path = Storage::disk('s3')->url($path);
+        $travel->user_id = auth()->user()->id;
         $dating->save();
         
         return response()->json($dating, 200);

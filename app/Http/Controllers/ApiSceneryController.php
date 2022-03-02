@@ -15,7 +15,7 @@ class ApiSceneryController extends Controller
      */
     public function index(Scenery $scenery)
     {
-        $sceneries = $scenery->getAllSceneries();
+        $sceneries = $scenery->getYourAllSceneries(auth()->user()->id);
         return response()->json($sceneries, 200);
     }
 
@@ -34,6 +34,7 @@ class ApiSceneryController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('sceneries', $image, 'public');
         $scenery->image_path = Storage::disk('s3')->url($path);
+        $travel->user_id = auth()->user()->id;
         $scenery->save();
         
         return response()->json($scenery, 200);

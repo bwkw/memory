@@ -15,7 +15,7 @@ class ApiTravelController extends Controller
      */
     public function index(Travel $travel)
     {
-        $travels = $travel->getAllTravels();
+        $travels = $travel->getYourAllTravels(auth()->user()->id);
         return response()->json($travels, 200);
     }
 
@@ -34,6 +34,7 @@ class ApiTravelController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('travels', $image, 'public');
         $travel->image_path = Storage::disk('s3')->url($path);
+        $travel->user_id = auth()->user()->id;
         $travel->save();
         
         return response()->json($travel, 200);

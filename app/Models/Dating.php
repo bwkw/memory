@@ -21,8 +21,8 @@ class Dating extends Model
         return $this->belongsTo(Schedule::class);
     }
     
-    public function getAllDatings()
+    public function getYourAllDatings($user_id)
     {
-        return $this->with('schedule')->get();
+        return $this->with('schedule')->where('user_id', $user_id)->get();
     }
 }

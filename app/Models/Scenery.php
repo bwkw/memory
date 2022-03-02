@@ -21,8 +21,8 @@ class Scenery extends Model
         return $this->belongsTo(Schedule::class);
     }
     
-    public function getAllSceneries()
+    public function getYourAllSceneries($user_id)
     {
-        return $this->with('schedule')->get();
+        return $this->with('schedule')->where('user_id', $user_id)->get();
     }
 }

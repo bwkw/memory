@@ -12,9 +12,9 @@ class ApiScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Schedule $schedule)
     {
-        $schedules = Schedule::all();
+        $schedules = $schedule->getYourAllSchedules(auth()->user()->id);
         return response()->json($schedules, 200);
     }
 
@@ -30,7 +30,7 @@ class ApiScheduleController extends Controller
         $schedule->title = $request->title;
         $schedule->start = $request->start;
         $schedule->end = $request->end;
-        $schedule->user_id = 1;
+        $schedule->user_id = auth()->user()->id;
         $schedule->save();
     }
     

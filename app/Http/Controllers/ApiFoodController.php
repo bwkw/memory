@@ -15,7 +15,7 @@ class ApiFoodController extends Controller
      */
     public function index(Food $food)
     {
-        $foods = $food->getAllFoods();
+        $foods = $food->getYourAllFoods(auth()->user()->id);
         return response()->json($foods, 200);
     }
 
@@ -34,6 +34,7 @@ class ApiFoodController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('foods', $image, 'public');
         $food->image_path = Storage::disk('s3')->url($path);
+        $travel->user_id = auth()->user()->id;
         $food->save();
         
         return response()->json($food, 200);
