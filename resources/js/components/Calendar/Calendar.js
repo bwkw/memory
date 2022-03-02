@@ -12,9 +12,9 @@ import ModalForm from '@/components/Modal/Form';
 export default function Calendar() {
   const [events, setEvents] = useState([]);
   const [id, setId] = useState();
-  const [title, setTitle] = useState();
-  const [start, setStart] = useState();
-  const [end, setEnd] = useState();
+  const [title, setTitle] = useState("");
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
   const [selectFlag, setSelectFlag] = useState(false);
   const [eventFlag, setEventFlag] = useState(false);
   const [saveFlag, setSaveFlag] = useState(false);
