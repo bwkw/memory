@@ -13,9 +13,9 @@ class ApiFoodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Food $food)
     {
-        $foods = Food::all();
+        $foods = $food->getAllFoods();
         return response()->json($foods, 200);
     }
 

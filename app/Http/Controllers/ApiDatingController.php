@@ -13,9 +13,9 @@ class ApiDatingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Dating $dating)
     {
-        $datings = Dating::all();
+        $datings = $dating->getAllDatings();
         return response()->json($datings, 200);
     }
 

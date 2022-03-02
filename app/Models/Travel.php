@@ -23,6 +23,6 @@ class Travel extends Model
     
     public function getAllTravels()
     {
-        return Travel::with('schedule')->get();
+        return $this->with('schedule')->get();
     }
 }
