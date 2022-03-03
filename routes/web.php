@@ -53,7 +53,7 @@ Route::group(['prefix' => 'api/travels'], function(){
     Route::post('/{travel}/edit', [ApiTravelController::class, 'update'])->name('api_travel_update');
 });
 
-Route::group(['prefix' => 'api/schedules', 'middleware' => 'api'], function(){
+Route::group(['prefix' => 'api/schedules'], function(){
     Route::get('/', [ApiScheduleController::class, 'index'])->name('api_schedule_index');
     Route::post('/', [ApiScheduleController::class, 'store'])->name('api_schedule_store');
     // Route::get('/{travel}', [ApiTravelController::class, 'show'])->name('api_travel_show');
