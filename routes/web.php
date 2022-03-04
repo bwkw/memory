@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
 
 Route::group(['prefix' => 'api/datings'], function(){
     Route::get('/', [ApiDatingController::class, 'index'])->name('api_dating_index');
@@ -64,4 +63,4 @@ Route::group(['prefix' => 'api/schedules'], function(){
 
 Route::get('/{any}', function () {
     return view('main');
-})->where('any','.*')->middleware('auth');
+})->where('any','.*');
