@@ -27,7 +27,7 @@ export default function Item() {
   
   return (
     <List>
-      <Link to={ calendar.url } key={ calendar.name }>
+      <Link to={ calendar.url } key={ calendar.name } className="text-body">
         <ListItem>
           <ListItemIcon>
             { calendar.icon }
@@ -37,7 +37,7 @@ export default function Item() {
       </Link>
       <Divider />
       { menus.map((menu) => (
-        <Link to={ menu.url } key={ menu.name }>
+        <Link to={ menu.url } key={ menu.name } className="text-body">
           <ListItem>
             <ListItemIcon>
               { menu.icon }
