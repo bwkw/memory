@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 
 import Calendar from '@/components/Calendar/Calendar';
 import CategoryCreate from '@/components/Category/Create';
@@ -8,13 +9,26 @@ import CategoryIndex from '@/components/Category/Index';
 import CategoryShow from '@/components/Category/Show';
 import HomeIndex from '@/components/Home/Index';
 import HeaderBar from '@/components/Bar/HeaderBar';
+import Login from '@/components/Certification/Login';
+import Register from '@/components/Certification/Register';
 import { theme } from '@/theme';
 import { ThemeProvider } from '@mui/material/styles';
 
 
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.post['Accept'] = 'application/json';
+axios.defaults.withCredentials = true;
+axios.interceptors.request.use(function(config){
+    const token = localStorage.getItem('auth_token');
+    config.headers.Authorization = token ? `Bearer ${token}` : '';
+    return config;
+});
+
 function Router() {
   const Body = (
     <Routes>
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/" element={<HomeIndex />} />
       <Route path="/calendar" element={<Calendar />} />
       <Route path="/datings" element={<CategoryIndex category="datings" />} />

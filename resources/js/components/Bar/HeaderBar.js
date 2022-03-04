@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import swal from 'sweetalert';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import MuiLink from '@mui/material/Link';
 import Menu from '@/components/Menu/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -18,6 +19,43 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HeaderBar() {
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  const logoutSubmit = (e) => {
+    e.preventDefault();
+
+    axios.post(`/api/logout`).then(res => {
+      if (res.data.status === 200) {
+        localStorage.removeItem('auth_token', res.data.token);
+        localStorage.removeItem('auth_name', res.data.username);
+        swal("ログアウトしました", res.data.message, "success");
+        navigate('/');
+      } 
+    });
+  };
+
+  var AuthButtons = '';
+  if (!localStorage.getItem('auth_token')){
+    AuthButtons = (
+      <div>
+        <Link to="/register" className="text-white">
+          <span className="text-white">Register</span>
+        </Link>
+        <Link to="/login" className="text-white">
+          <span >Login</span>
+        </Link>
+      </div>
+    );
+  } else {
+    AuthButtons = (
+      <div onClick={logoutSubmit}>
+        <Link to="/">
+          logout
+        </Link>
+      </div>
+    );
+  }
+  
   
   return (
     <Box sx={{ flexGrow: 1, mb: 4 }}>
@@ -29,12 +67,7 @@ export default function HeaderBar() {
               Toi et Moi
             </Link>
           </Typography>
-          <MuiLink href="/login" underline="none" color="inherit" sx={{ pr: 3 }}>
-            Login
-          </MuiLink>
-          <MuiLink href="/register" underline="none" color="inherit" sx={{ pr: 1 }}>
-            Register
-          </MuiLink>
+          { AuthButtons }
         </Toolbar>
       </AppBar>
     </Box>
