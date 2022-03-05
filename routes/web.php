@@ -56,8 +56,8 @@ Route::group(['prefix' => 'api/schedules', 'middleware' => 'auth:sanctum'], func
     Route::get('/', [ApiScheduleController::class, 'index'])->name('api_schedule_index');
     Route::post('/', [ApiScheduleController::class, 'store'])->name('api_schedule_store');
     // Route::get('/{travel}', [ApiTravelController::class, 'show'])->name('api_travel_show');
-    // Route::post('/{travel}/delete', [ApiTravelController::class, 'destroy'])->name('api_travel_delete');
-    // Route::post('/{travel}/edit', [ApiTravelController::class, 'update'])->name('api_travel_update');
+    Route::post('/{schedule}/delete', [ApiScheduleController::class, 'destroy'])->name('api_schedule_delete');
+    Route::post('/{schedule}/edit', [ApiScheduleController::class, 'update'])->name('api_schedule_update');
 });
 
 

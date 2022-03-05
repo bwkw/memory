@@ -30,7 +30,7 @@ class ApiScheduleController extends Controller
         $schedule->title = $request->title;
         $schedule->start = $request->start;
         $schedule->end = $request->end;
-        $schedule->user_id = auth()->user()->id;
+        $schedule->user_id = $request->user()->id;
         $schedule->save();
     }
     
@@ -46,17 +46,6 @@ class ApiScheduleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Schedule $schedule)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -65,7 +54,10 @@ class ApiScheduleController extends Controller
      */
     public function update(Request $request, Schedule $schedule)
     {
-        //
+        $schedule->title = $request->title;
+        $schedule->start = $request->start;
+        $schedule->end = $request->end;
+        $schedule->save();
     }
 
     /**
@@ -76,6 +68,6 @@ class ApiScheduleController extends Controller
      */
     public function destroy(Schedule $schedule)
     {
-        //
+        $schedule->delete();
     }
 }

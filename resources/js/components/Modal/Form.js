@@ -1,10 +1,10 @@
 import { useForm, Controller } from "react-hook-form";
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Box from '@mui/material/Box';
-import { Button } from "@material-ui/core";
+import Button from '@mui/material/Button';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
+import Stack from '@mui/material/Stack';
 import TextField from "@material-ui/core/TextField";
 
 
@@ -45,7 +45,6 @@ const useStyles = makeStyles(() =>
 
 export default function Form(props) {
   const classes = useStyles();
-  const navigate = useNavigate();
   const { control, formState: { errors }, handleSubmit, register } = useForm({
     defaultValues: {
       title: props.title,
@@ -68,22 +67,76 @@ export default function Form(props) {
     }
   };
   
-  const onSubmit = (data) => {
+  const Bottom = () => {
     switch(props.mode){
       case "create":
-        axios
-          .post(`/api/schedules`, data)
-          .then(res => {
-            props.setSaveFlag(true);
-            props.setInView(false);
-          })
-          .catch(error => {
-            console.log(error);
-          });
+        return(
+          <Button
+            variant="contained"
+            color="secondary"
+            style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
+            type="submit"
+          >
+            Save
+          </Button>
+        );
       case "edit":
-        
+        return(
+          <Stack spacing={2} direction="row">
+            <Button 
+              variant="contained" 
+              color="primary" 
+              style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
+              onClick={() => deleteEvent()}
+            >
+              Delete
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
+              type="submit"
+            >
+              Save
+            </Button>
+          </Stack>
+        );
     }
   };
+  
+  const onSubmit = (data) => {
+    if (props.mode == "create") {
+      axios
+        .post(`/api/schedules`, data)
+        .then(res => {
+          props.setInView(false);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      axios
+        .post(`/api/schedules/${props.id}/edit`, data)
+        .then(res => {
+          props.setInView(false);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  };
+  
+  const deleteEvent = () => {
+    axios
+      .post(`/api/schedules/${props.id}/delete`)
+      .then(res => {
+        props.setInView(false);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  
   
   return (
     <div>
@@ -184,18 +237,12 @@ export default function Form(props) {
           />
           {errors.end && <p style={{ color: "red", margin: 0, fontSize: "20px", fontFamily:['Moon Dance', 'Noto Serif JP'] }}>{errors.end.message}</p>}
           
+
           <Box
             mt={5}
             mb={5}
           >
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
-            >
-              Save
-            </Button>
+            { Bottom() }
           </Box>
         </form>
       </div>

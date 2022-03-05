@@ -15,9 +15,9 @@ export default function Calendar() {
   const [title, setTitle] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [mode, setMode] = useState("");
   const [selectFlag, setSelectFlag] = useState(false);
   const [eventFlag, setEventFlag] = useState(false);
-  const [saveFlag, setSaveFlag] = useState(false);
   const [inView, setInView] = useState(true);
   
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Calendar() {
 		  .catch(() => {
 		    console.log("通信に失敗しました");
 		  });
-  }, [saveFlag]);
+  }, [inView]);
   
   // 日付成形用メソッド
   const moldDateTime = (dateTime) => {
@@ -53,12 +53,14 @@ export default function Calendar() {
   const handleSelect = (selectInfo) => {
     const selectStart = new Date(selectInfo.start);
     const selectEnd = new Date(selectInfo.end);
+    setTitle("");
     setStart(moldDateTime((selectStart)));
     setEnd(moldDateTime((selectEnd)));
     
     // 登録モーダル表示用にselectFlagをtrueに
     setSelectFlag(true);
     setInView(true);
+    setMode("create");
   };
   
   // カレンダーの予定クリック時のイベント編集フォーム表示
@@ -72,6 +74,7 @@ export default function Calendar() {
     // 編集モーダル表示用にeventFlagをtrueに
     setEventFlag(true);
     setInView(true);
+    setMode("edit");
   };
   
   return (
@@ -112,8 +115,8 @@ export default function Calendar() {
         </Grid>
       </Grid>
       
-      { (selectFlag && inView) && <ModalForm mode="create" title={title} start={start} end={end} inView={inView} setInView={setInView} setSaveFlag={setSaveFlag} /> }
-      { (eventFlag && inView) && <ModalForm mode="edit" id={id} title={title} start={start} end={end} inView={inView} setInView={setInView} setSaveFlag={setSaveFlag} /> }
+      { (selectFlag && inView) && <ModalForm mode={mode} title={title} start={start} end={end} inView={inView} setInView={setInView} /> }
+      { (eventFlag && inView) && <ModalForm mode={mode} id={id} title={title} start={start} end={end} inView={inView} setInView={setInView} /> }
     </div>
   );
 }
