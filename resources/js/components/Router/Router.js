@@ -26,13 +26,16 @@ axios.interceptors.request.use(function(config){
 });
 
 export const AuthenticateCheck = createContext();
+export const AuthenticateName = createContext();
 
 function Router() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const value = {isAuthenticated, setIsAuthenticated};
+  const [userName, setUserName] = useState(null);
+  const authenticateCheck = {isAuthenticated, setIsAuthenticated};
+  const authenticateName = {userName, setUserName};
   
   let Body;
-  if (isAuthenticated) {
+  if (isAuthenticated || localStorage.getItem('auth_token')) {
     Body = (
       <Routes>
         <Route path="/register" element={<Register />} />
@@ -71,9 +74,11 @@ function Router() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <AuthenticateCheck.Provider value={value}>
-          <HeaderBar />
-          { Body }
+        <AuthenticateCheck.Provider value={authenticateCheck}>
+          <AuthenticateName.Provider value={authenticateName}>
+            <HeaderBar />
+            { Body }
+          </AuthenticateName.Provider>
         </AuthenticateCheck.Provider>
       </ThemeProvider>
     </BrowserRouter>

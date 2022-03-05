@@ -6,7 +6,7 @@ import MenuItem from '@/components/Menu/Item';
 import MenuIcon from '@mui/icons-material/Menu';
 
 
-export default function Menu() {
+export default function SideBarMenu() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   
   const handleDrawerToggle = () => {
