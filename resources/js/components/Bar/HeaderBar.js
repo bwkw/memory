@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 
 import AppBar from '@mui/material/AppBar';
 import { AuthenticateCheck } from "@/components/Router/Router";
-import { AuthenticateName } from "@/components/Router/Router";
+import { AuthenticateUser } from "@/components/Router/Router";
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -24,20 +24,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HeaderBar() {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthenticateCheck);
-  const { userName, setUserName } = useContext(AuthenticateName);
+  const { user, setUser } = useContext(AuthenticateUser);
   const classes = useStyles();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
-
   const logoutSubmit = (e) => {
     e.preventDefault();
 
     axios.post(`/api/logout`).then(res => {
       if (res.data.status === 200) {
         localStorage.removeItem('auth_token', res.data.token);
-        localStorage.removeItem('auth_name', res.data.username);
+        localStorage.removeItem('auth_name', res.data.userName);
         setIsAuthenticated(false);
-        setUserName(null);
+        setUser({...user, id: ""});
+        setUser({...user, name: ""});
         swal("ログアウトしました", res.data.message, "success");
         navigate('/logout');
       } 
@@ -61,7 +61,7 @@ export default function HeaderBar() {
           sx={{ flexGrow: 1 }}
           onClick={handleMenu}
         >
-          { userName ? <span className="text-white">{userName}</span> : <span className="text-white">{localStorage.getItem('auth_name')}</span> }
+          { user["name"] ? <span className="text-white">{user["name"]}</span> : <span className="text-white">{localStorage.getItem('auth_name')}</span> }
         </Typography>
         <Menu
           id="menu-appbar"

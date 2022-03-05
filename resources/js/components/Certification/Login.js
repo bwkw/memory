@@ -4,13 +4,13 @@ import axios from 'axios';
 import swal from "sweetalert";
 
 import { AuthenticateCheck } from "@/components/Router/Router";
-import { AuthenticateName } from "@/components/Router/Router";
+import { AuthenticateUser } from "@/components/Router/Router";
 
 
 export default function Login() {
   const navigate = useNavigate();
   const { setIsAuthenticated } = useContext(AuthenticateCheck);
-  const { setUserName } = useContext(AuthenticateName);
+  const { user, setUser } = useContext(AuthenticateUser);
   const [loginInput, setLogin] = useState({
     email: '',
     password: '',
@@ -35,8 +35,10 @@ export default function Login() {
         if(res.data.status === 200) {
           localStorage.setItem('auth_token', res.data.token);
           setIsAuthenticated(true);
-          localStorage.setItem('auth_name', res.data.username);
-          setUserName(res.data.username);
+          localStorage.setItem('auth_id', res.data.userId);
+          localStorage.setItem('auth_name', res.data.userName);
+          setUser({...user, id: res.data.userId});
+          setUser({...user, name: res.data.userName});
           swal("Success", res.data.message, "success");
           navigate("/");
         } else if (res.data.status === 401) {
