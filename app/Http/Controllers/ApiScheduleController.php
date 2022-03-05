@@ -12,9 +12,9 @@ class ApiScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Schedule $schedule)
+    public function index(Request $request, Schedule $schedule)
     {
-        $schedules = $schedule->getYourAllSchedules(auth()->user()->id);
+        $schedules = $schedule->getYourAllSchedules($request->user()->id);
         return response()->json($schedules, 200);
     }
 

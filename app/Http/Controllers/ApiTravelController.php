@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Travel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,9 +14,9 @@ class ApiTravelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Travel $travel)
+    public function index(Request $request, Travel $travel)
     {
-        $travels = $travel->getYourAllTravels(auth()->user()->id);
+        $travels = $travel->getYourAllTravels($request->user()->id);
         return response()->json($travels, 200);
     }
 

@@ -7,6 +7,7 @@ import AppBar from '@mui/material/AppBar';
 import { AuthenticateCheck } from "@/components/Router/Router";
 import { AuthenticateUser } from "@/components/Router/Router";
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SideBarMenu from '@/components/Menu/SideBarMenu';
@@ -56,13 +57,14 @@ export default function HeaderBar() {
   if (isAuthenticated || localStorage.getItem('auth_token')) {
     AuthButtons = (
       <div>
-        <Typography
+        <Button
           component="span"
           sx={{ flexGrow: 1 }}
           onClick={handleMenu}
+           color="inherit"
         >
           { user["name"] ? <span className="text-white">{user["name"]}</span> : <span className="text-white">{localStorage.getItem('auth_name')}</span> }
-        </Typography>
+        </Button>
         <Menu
           id="menu-appbar"
           anchorEl={anchorEl}
