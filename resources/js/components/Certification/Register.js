@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
+import { AuthenticateCheck } from "@/components/Router/Router";
+
 
 export default function Register() {
   const navigate = useNavigate();
+  const { setIsAuthenticated } = useContext(AuthenticateCheck);
   const [registerInput, setRegister] = useState({
     name: '',
     email: '',
@@ -32,6 +35,7 @@ export default function Register() {
         if(res.data.status === 200) {
           localStorage.setItem('auth_token', res.data.token);
           localStorage.setItem('auth_name', res.data.username);
+          setIsAuthenticated(true);
           swal("Success", res.data.message, "success");
           navigate("/");
         } else {

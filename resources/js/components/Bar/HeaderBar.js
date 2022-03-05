@@ -1,12 +1,15 @@
+import { useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
 import AppBar from '@mui/material/AppBar';
+import { AuthenticateCheck } from "@/components/Router/Router";
 import Box from '@mui/material/Box';
 import Menu from '@/components/Menu/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+
 
 import { makeStyles } from '@mui/styles';
 
@@ -18,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function HeaderBar() {
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthenticateCheck);
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -28,6 +32,7 @@ export default function HeaderBar() {
       if (res.data.status === 200) {
         localStorage.removeItem('auth_token', res.data.token);
         localStorage.removeItem('auth_name', res.data.username);
+        setIsAuthenticated(false);
         swal("ログアウトしました", res.data.message, "success");
         navigate('/');
       } 
@@ -35,7 +40,7 @@ export default function HeaderBar() {
   };
 
   var AuthButtons = '';
-  if (!localStorage.getItem('auth_token')){
+  if (!isAuthenticated) {
     AuthButtons = (
       <div>
         <Link to="/register" className="text-white">
@@ -61,7 +66,7 @@ export default function HeaderBar() {
     <Box sx={{ flexGrow: 1, mb: 4 }}>
       <AppBar position="static">
         <Toolbar className={classes.toolBar}>
-          <Menu />
+          { localStorage.getItem('auth_token') && <Menu /> }
           <Typography variant="h5" component="span" sx={{ flexGrow: 1 }}>
             <Link to="/" underline="none" color="inherit" style={{ color: '#FFF' }}>
               Toi et Moi

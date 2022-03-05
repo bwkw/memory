@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import swal from "sweetalert";
 
+import { AuthenticateCheck } from "@/components/Router/Router";
+
 
 export default function Login() {
   const navigate = useNavigate();
+  const { setIsAuthenticated } = useContext(AuthenticateCheck);
   const [loginInput, setLogin] = useState({
     email: '',
     password: '',
@@ -30,10 +33,11 @@ export default function Login() {
         if(res.data.status === 200) {
           localStorage.setItem('auth_token', res.data.token);
           localStorage.setItem('auth_name', res.data.username);
+          setIsAuthenticated(true);
           swal("Success", res.data.message, "success");
           navigate("/");
         } else if (res.data.status === 401) {
-          swal("注意", res.data.message, "warning");
+          swal("Warning", res.data.message, "warning");
         } else {
           setLogin({...loginInput, error_list: res.data.validation_errors});
         }
