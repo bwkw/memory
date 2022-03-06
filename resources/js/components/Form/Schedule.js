@@ -37,6 +37,8 @@ export default function Schedule(props) {
     props.handleNext();
     data["id"] = currentState.id;
     data["category"] = currentState.category;
+    data["name"] = currentState.name;
+    data["shooting_date"] = currentState.shooting_date;
     setCurrentState(data);
   };
   

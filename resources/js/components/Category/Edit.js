@@ -26,7 +26,7 @@ export default function Edit(props) {
 	 
   return(
     <div>
-      { datasFlag && <AllForm category={props.category} id={data.id} name={data.name} shooting_date={data.shooting_date} /> }
+      { datasFlag && <AllForm id={data.id} category={props.category} name={data.name} shooting_date={data.shooting_date} schedule_id={data.schedule_id} /> }
     </div>
   );
 }
