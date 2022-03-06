@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from "react-router-dom";
 import axios from 'axios';
 
 import PropTypes from 'prop-types';
@@ -20,7 +21,6 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
@@ -56,34 +56,22 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'name',
+    id: 'title',
     numeric: false,
     disablePadding: true,
-    label: 'Dessert (100g serving)',
+    label: 'Title',
   },
   {
-    id: 'calories',
+    id: 'start',
     numeric: true,
     disablePadding: false,
-    label: 'Calories',
+    label: 'Start',
   },
   {
-    id: 'fat',
+    id: 'end',
     numeric: true,
     disablePadding: false,
-    label: 'Fat (g)',
-  },
-  {
-    id: 'carbs',
-    numeric: true,
-    disablePadding: false,
-    label: 'Carbs (g)',
-  },
-  {
-    id: 'protein',
-    numeric: true,
-    disablePadding: false,
-    label: 'Protein (g)',
+    label: 'End',
   },
 ];
 
@@ -104,7 +92,7 @@ function EnhancedTableHead(props) {
             checked={scheduleCount > 0 && numSelected === scheduleCount}
             onChange={onSelectAllClick}
             inputProps={{
-              'aria-label': 'select all desserts',
+              'aria-label': 'select all schedules',
             }}
           />
         </TableCell>
@@ -207,18 +195,18 @@ export default function EnhancedTable() {
   const [schedulesPerPage, setSchedulesPerPage] = useState(5);
   const [schedules, setSchedules] = useState([]);
   
+ 
   useEffect(() => {
     axios
       .get("/api/schedules")
       .then(response => {
-		  	setSchedules(response.data);
-		  })
-		  .catch(() => {
-		    console.log("通信に失敗しました");
-		  });
+  	  	setSchedules(response.data);
+  	  })
+  	  .catch(() => {
+  	    console.log("通信に失敗しました");
+  	  });
   }, []);
-  
-  
+
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
@@ -227,7 +215,7 @@ export default function EnhancedTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = schedules.map((n) => n.name);
+      const newSelecteds = schedules.map((n) => n.id);
       setSelected(newSelecteds);
       return;
     }
@@ -274,9 +262,7 @@ export default function EnhancedTable() {
     page > 0 ? Math.max(0, (1 + page) * schedulesPerPage - schedules.length) : 0;
 
   return (
-    <Grid container>
-      <Grid item xs={1} sm={2} />
-      <Grid item xs={10} sm={8}>
+    <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
@@ -291,23 +277,23 @@ export default function EnhancedTable() {
                 orderBy={orderBy}
                 onSelectAllClick={handleSelectAllClick}
                 onRequestSort={handleRequestSort}
-                rowCount={schedules.length}
+                scheduleCount={schedules.length}
               />
               <TableBody>
                 {stableSort(schedules, getComparator(order, orderBy))
                   .slice(page * schedulesPerPage, page * schedulesPerPage + schedulesPerPage)
                   .map((schedule, index) => {
-                    const isItemSelected = isSelected(schedule.title);
+                    const isItemSelected = isSelected(schedule.id);
                     const labelId = `enhanced-table-checkbox-${index}`;
   
                     return (
                       <TableRow
                         hover
-                        onClick={(event) => handleClick(event, schedule.name)}
+                        onClick={(event) => handleClick(event, schedule.id)}
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
-                        key={schedule.name}
+                        key={schedule.id}
                         selected={isItemSelected}
                       >
                         <TableCell padding="checkbox">
@@ -343,7 +329,7 @@ export default function EnhancedTable() {
                 )}
               </TableBody>
             </Table>
-
+  
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
@@ -355,12 +341,11 @@ export default function EnhancedTable() {
           onRowsPerPageChange={handleChangeSchedulesPerPage}
         />
       </Paper>
-  
+
       <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
-          </Grid>
-    </Grid>
+    </Box>
   );
 }
