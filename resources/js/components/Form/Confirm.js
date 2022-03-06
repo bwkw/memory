@@ -54,11 +54,13 @@ export default function Confirm(props) {
   
   const onSubmit = (id) => {
     setLoadingFlag(true);
+    console.log(currentState);
     const data = new FormData();
     data.append('name', currentState.name);
     data.append('latitude', currentState.lat);
     data.append('longitude', currentState.lng);
     data.append('shooting_date', currentState.shooting_date);
+    data.append('schedule_id', currentState.schedule_id);
     data.append('image', image);
 
     const headers = { "content-type": "multipart/form-data" };
@@ -88,8 +90,8 @@ export default function Confirm(props) {
   return (
     <TableContainer component={Paper}>
       <Grid container>
-        <Grid xs={1} sm={2} md={3} />
-        <Grid xs={10} sm={8} md={6}>
+        <Grid item xs={1} sm={2} md={3} />
+        <Grid item xs={10} sm={8} md={6}>
         <Box m={3} />
           <Table aria-label="Customer Input Data">
             <TableHead>

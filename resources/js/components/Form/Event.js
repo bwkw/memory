@@ -6,12 +6,13 @@ import { Button } from "@material-ui/core";
 import GoogleGeocode from "react-geocode";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Stack from '@mui/material/Stack';
 import TextField from "@material-ui/core/TextField";
 import TableContainer from '@material-ui/core/TableContainer';
 import { UserInputData } from "@/components/Form/AllForm";
 
 
-export default function Basic(props) {
+export default function Event(props) {
   const { currentState, setCurrentState } = useContext(UserInputData);
   const { control, formState: { errors }, handleSubmit, register } = useForm({
     defaultValues: {
@@ -38,6 +39,7 @@ export default function Basic(props) {
     props.handleNext();
     Geocode(data);
     data["id"] = currentState.id;
+    data["schedule_id"] = currentState.schedule_id;
     data["category"] = currentState.category;
     setCurrentState(data);
   };
@@ -46,8 +48,8 @@ export default function Basic(props) {
   return (
     <TableContainer component={Paper}>
       <Grid container>
-        <Grid xs={1} sm={2} md={3} />
-        <Grid xs={10} sm={8} md={6}>
+        <Grid item xs={1} sm={2} md={3} />
+        <Grid item xs={10} sm={8} md={6}>
           <Box m={5} />
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller                      
@@ -103,14 +105,24 @@ export default function Basic(props) {
               mt={5}
               mb={5}
             >
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
-              >
-                next
-              </Button>
+              <Stack spacing={2} direction="row">
+                <Button 
+                  variant="contained" 
+                  color="primary" 
+                  style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
+                  onClick={props.handleBack}
+                >
+                  back
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
+                >
+                  next
+                </Button>
+              </Stack>  
             </Box>
           </form>
         </Grid>

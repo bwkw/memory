@@ -1,8 +1,9 @@
 import { createContext, useState } from 'react';
 
-import Basic from '@/components/Form/Basic';
 import Confirm from '@/components/Form/Confirm';
+import Event from '@/components/Form/Event';
 import Grid from '@material-ui/core/Grid';
+import Schedule from '@/components/Form/Schedule';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -10,7 +11,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 
 function getSteps() {
   return [
-    "入力項目",
+    "スケジュール情報入力",
+    "イベント情報入力",
     "入力確認"
   ];
 }
@@ -18,8 +20,10 @@ function getSteps() {
 function getStepContent(stepIndex, handleNext, handleBack) {
   switch (stepIndex) {
     case 0:
-      return <Basic handleNext={handleNext} />;
+      return <Schedule handleNext={handleNext} />;
     case 1:
+      return <Event handleNext={handleNext} handleBack={handleBack} />;
+    case 2:
       return <Confirm handleBack={handleBack} />;
     default:
       return "Unknown stepIndex";
@@ -44,8 +48,8 @@ export default function AllForm(props) {
   
   return (
     <Grid container>
-      <Grid xs={1} sm={2} md={3} />
-      <Grid xs={10} sm={8} md={6}>
+      <Grid item xs={1} sm={2} md={3} />
+      <Grid item xs={10} sm={8} md={6}>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
