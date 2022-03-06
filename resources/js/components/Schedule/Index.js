@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import ScheduleIndex from '@/components/Table/ScheduleIndex';
 
 
-{/* 各CategoryのIndexメインコンポーネント */}
+{/* Schedule一覧のメインコンポーネント */}
 export default function Index(props) {
   return(
     <Grid container>
