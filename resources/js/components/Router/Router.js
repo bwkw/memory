@@ -12,6 +12,7 @@ import HomeIndex from '@/components/Home/Index';
 import HeaderBar from '@/components/Bar/HeaderBar';
 import Login from '@/components/Certification/Login';
 import Register from '@/components/Certification/Register';
+import ScheduleIndex from '@/components/Schedule/Index';
 import { theme } from '@/theme';
 import { ThemeProvider } from '@mui/material/styles';
 
@@ -54,6 +55,7 @@ function Router() {
         <Route path="/sceneries/create" element={<CategoryCreate category="sceneries" />} />
         <Route path="/sceneries/:id" element={<CategoryShow category="sceneries" />} />
         <Route path="/sceneries/:id/edit" element={<CategoryEdit category="sceneries" />} />
+        <Route path="/schedules" element={<ScheduleIndex />} />
         <Route path="/travels" element={<CategoryIndex category="travels" />} />
         <Route path="/travels/create" element={<CategoryCreate category="travels" />} />
         <Route path="/travels/:id" element={<CategoryShow category="travels" />} />

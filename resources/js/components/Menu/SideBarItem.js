@@ -8,15 +8,19 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone';
 import PhotoCameraTwoToneIcon from '@mui/icons-material/PhotoCameraTwoTone';
 import RestaurantTwoToneIcon from '@mui/icons-material/RestaurantTwoTone';
 import Typography from '@mui/material/Typography';
 
 
-export default function Item() {
+export default function SideBarItem() {
   
   const calendar = 
     {"icon":<CalendarTodayTwoToneIcon />, "name": "Calendar", "url": "/calendar"};
+  
+  const schedule =
+    {"icon":<MenuBookTwoToneIcon />, "name": "Schedule", "url": "/schedules"};
     
   const menus = [
     {"icon":<AirplanemodeActiveTwoToneIcon />, "name": "Travel 一覧", "url": "/travels"},
@@ -33,6 +37,15 @@ export default function Item() {
             { calendar.icon }
           </ListItemIcon>
           <ListItemText primary={<Typography style={{ color: 'black' }}>{ calendar.name }</Typography>} />
+        </ListItem>
+      </Link>
+      <Divider />
+      <Link to={ schedule.url } key={ schedule.name } className="text-body">
+        <ListItem>
+          <ListItemIcon>
+            { schedule.icon }
+          </ListItemIcon>
+          <ListItemText primary={<Typography style={{ color: 'black' }}>{ schedule.name }</Typography>} />
         </ListItem>
       </Link>
       <Divider />

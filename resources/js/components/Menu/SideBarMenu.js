@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@mui/material/IconButton';
-import MenuItem from '@/components/Menu/Item';
+import MenuItem from '@/components/Menu/SideBarItem';
 import MenuIcon from '@mui/icons-material/Menu';
 
 
