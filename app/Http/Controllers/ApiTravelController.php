@@ -36,7 +36,7 @@ class ApiTravelController extends Controller
         $path = Storage::disk('s3')->putFile('travels', $image, 'public');
         $travel->image_path = Storage::disk('s3')->url($path);
         $travel->schedule_id = $request->schedule_id;
-        $travel->user_id = auth()->user()->id;
+        $travel->user_id = $request->user()->id;
         $travel->save();
         
         return response()->json($travel, 200);

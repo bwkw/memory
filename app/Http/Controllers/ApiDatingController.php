@@ -34,7 +34,8 @@ class ApiDatingController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('datings', $image, 'public');
         $dating->image_path = Storage::disk('s3')->url($path);
-        $travel->user_id = auth()->user()->id;
+        $dating->schedule_id = $request->schedule_id;
+        $dating->user_id = $request->user()->id;
         $dating->save();
         
         return response()->json($dating, 200);
@@ -67,6 +68,7 @@ class ApiDatingController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('datings', $image, 'public');
         $dating->image_path = Storage::disk('s3')->url($path);
+        $dating->schedule_id = $request->schedule_id;
         $dating->save();
         
         return response()->json($dating, 200);

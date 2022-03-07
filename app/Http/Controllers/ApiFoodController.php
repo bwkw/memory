@@ -34,7 +34,8 @@ class ApiFoodController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('foods', $image, 'public');
         $food->image_path = Storage::disk('s3')->url($path);
-        $travel->user_id = auth()->user()->id;
+        $food->schedule_id = $request->schedule_id;
+        $food->user_id = $request->user()->id;
         $food->save();
         
         return response()->json($food, 200);
@@ -67,6 +68,7 @@ class ApiFoodController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('foods', $image, 'public');
         $food->image_path = Storage::disk('s3')->url($path);
+        $food->schedule_id = $request->schedule_id;
         $food->save();
         
         return response()->json($food, 200);

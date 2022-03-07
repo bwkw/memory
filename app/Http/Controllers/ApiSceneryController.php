@@ -34,7 +34,8 @@ class ApiSceneryController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('sceneries', $image, 'public');
         $scenery->image_path = Storage::disk('s3')->url($path);
-        $travel->user_id = auth()->user()->id;
+        $scenery->schedule_id = $request->schedule_id;
+        $scenery->user_id = $request->user()->id;
         $scenery->save();
         
         return response()->json($scenery, 200);
@@ -67,6 +68,7 @@ class ApiSceneryController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('sceneries', $image, 'public');
         $scenery->image_path = Storage::disk('s3')->url($path);
+        $scenery->schedule_id = $request->schedule_id;
         $scenery->save();
         
         return response()->json($scenery, 200);
