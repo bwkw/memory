@@ -20,7 +20,7 @@ export default function SideBarItem() {
     {"icon":<CalendarTodayTwoToneIcon />, "name": "Calendar", "url": "/calendar"};
   
   const schedule =
-    {"icon":<MenuBookTwoToneIcon />, "name": "Schedule", "url": "/schedules"};
+    {"icon":<MenuBookTwoToneIcon />, "name": "Schedule 一覧", "url": "/schedules"};
     
   const menus = [
     {"icon":<AirplanemodeActiveTwoToneIcon />, "name": "Travel 一覧", "url": "/travels"},

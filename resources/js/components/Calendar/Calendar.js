@@ -78,10 +78,21 @@ export default function Calendar() {
     setMode("edit");
   };
   
+  // カレンダーの予定ドロップ時のイベント編集
   const dropEvent = (eventInfo) => {
     const event = eventInfo.event;
-    console.log(event);
+    const data = { id: event.id, title: event.title, start: moldDateTime(event.start), end: moldDateTime(event.end) };
+    
+    axios
+      .post(`/api/schedules/${data.id}/edit`, data)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
+  
   
   return (
     <div>
@@ -117,6 +128,7 @@ export default function Calendar() {
             select={handleSelect}
             events={events}
             eventClick={handleEvent}
+            editable={true}
             eventDrop={dropEvent}
           />
         </Grid>

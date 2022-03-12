@@ -10,8 +10,6 @@ export default function Index(props) {
       <Grid item xs={1} sm={2} />
       <Grid item xs={10} sm={8}>
         <Box m={2} />
-        <h2>スケジュール一覧</h2>
-        <Box m={2} />
         <ScheduleIndex />
       </Grid>
     </Grid>

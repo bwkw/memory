@@ -160,7 +160,7 @@ const EnhancedTableToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Nutrition
+          Schedule
         </Typography>
       )}
 
@@ -259,6 +259,7 @@ export default function EnhancedTable() {
   // Avoid a layout jump when reaching the last page with empty schedules.
   const emptySchedules =
     page > 0 ? Math.max(0, (1 + page) * schedulesPerPage - schedules.length) : 0;
+
 
   return (
     <Box sx={{ width: '100%' }}>
