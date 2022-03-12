@@ -40,7 +40,7 @@ export default function HeaderBar() {
         setUser({...user, id: ""});
         setUser({...user, name: ""});
         swal("ログアウトしました", res.data.message, "success");
-        navigate('/logout');
+        navigate('/login');
       } 
     });
   };
@@ -90,6 +90,7 @@ export default function HeaderBar() {
         <Link to="/register" className="text-white">
           <span className="text-white">Register</span>
         </Link>
+        &emsp;
         <Link to="/login" className="text-white">
           <span >Login</span>
         </Link>
