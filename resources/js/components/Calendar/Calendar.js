@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import listPlugin from "@fullcalendar/list";
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
@@ -77,6 +78,11 @@ export default function Calendar() {
     setMode("edit");
   };
   
+  const dropEvent = (eventInfo) => {
+    const event = eventInfo.event;
+    console.log(event);
+  };
+  
   return (
     <div>
       <Grid
@@ -88,7 +94,7 @@ export default function Calendar() {
         <Grid item xs={10}>
           <FullCalendar
             locale="ja"
-            plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
+            plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin, listPlugin]}
             initialView="timeGridWeek"
             slotDuration="00:30:00"
             allDaySlot={true}
@@ -105,12 +111,13 @@ export default function Calendar() {
             headerToolbar={{
               start: 'title',
               center: 'prev next today',
-              end: 'dayGridMonth timeGridWeek'
+              end: 'dayGridMonth timeGridWeek listMonth'
             }}
             selectable={true}
             select={handleSelect}
             events={events}
             eventClick={handleEvent}
+            eventDrop={dropEvent}
           />
         </Grid>
       </Grid>
