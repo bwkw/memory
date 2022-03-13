@@ -14,7 +14,7 @@ class ApiScheduleController extends Controller
      */
     public function index(Request $request, Schedule $schedule)
     {
-        $schedules = $schedule->getYourAllSchedules($request->user()->id);
+        $schedules = $schedule->getAllSchedules($request->user()->id);
         return response()->json($schedules, 200);
     }
 
@@ -40,9 +40,12 @@ class ApiScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function show(Schedule $schedule)
+    public function show(Request $request, Schedule $schedule)
     {
-        //
+        $events = $schedule->getAllEvents($request->user()->id);
+        $scheduleEvents = collect([]);
+        $scheduleEvents->put('schedule', $schedule);
+        return response()->json($events, 200);
     }
 
     /**

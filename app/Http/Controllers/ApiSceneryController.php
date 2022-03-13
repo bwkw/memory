@@ -15,7 +15,7 @@ class ApiSceneryController extends Controller
      */
     public function index(Request $request, Scenery $scenery)
     {
-        $sceneries = $scenery->getYourAllSceneries($request->user()->id);
+        $sceneries = $scenery->getAllSceneries($request->user()->id);
         return response()->json($sceneries, 200);
     }
 

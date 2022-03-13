@@ -21,7 +21,7 @@ class Travel extends Model
         return $this->belongsTo(Schedule::class);
     }
     
-    public function getYourAllTravels($user_id)
+    public function getAllTravels($user_id)
     {
         return $this->with('schedule')->where('user_id', $user_id)->get();
     }

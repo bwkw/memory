@@ -15,7 +15,7 @@ class ApiDatingController extends Controller
      */
     public function index(Dating $dating, Request $request)
     {
-        $datings = $dating->getYourAllDatings($request->user()->id);
+        $datings = $dating->getAllDatings($request->user()->id);
         return response()->json($datings, 200);
     }
 

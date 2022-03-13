@@ -15,7 +15,7 @@ class ApiFoodController extends Controller
      */
     public function index(Food $food, Request $request)
     {
-        $foods = $food->getYourAllFoods($request->user()->id);
+        $foods = $food->getAllFoods($request->user()->id);
         return response()->json($foods, 200);
     }
 

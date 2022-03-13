@@ -16,7 +16,7 @@ class ApiTravelController extends Controller
      */
     public function index(Request $request, Travel $travel)
     {
-        $travels = $travel->getYourAllTravels($request->user()->id);
+        $travels = $travel->getAllTravels($request->user()->id);
         return response()->json($travels, 200);
     }
 

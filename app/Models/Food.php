@@ -21,7 +21,7 @@ class Food extends Model
         return $this->belongsTo(Schedule::class);
     }
     
-    public function getYourAllFoods($user_id)
+    public function getAllFoods($user_id)
     {
         return $this->with('schedule')->where('user_id', $user_id)->get();
     }
