@@ -42,7 +42,8 @@ class ApiScheduleController extends Controller
      */
     public function show(Request $request, Schedule $schedule)
     {
-        $events = $schedule->getAllEvents($request->user()->id);
+        $schedule_id = $schedule->id;
+        $events = $schedule->getAllEvents($request->user()->id, $schedule_id);
         $scheduleEvents = collect([]);
         $scheduleEvents->put('schedule', $schedule);
         $scheduleEvents->put('events', $events);

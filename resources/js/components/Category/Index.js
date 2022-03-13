@@ -31,7 +31,7 @@ export default function Index(props) {
 		  	}
 		  })
 		  .catch(() => {
-		    console.log("通信に失敗した");
+		    console.log("通信に失敗しました");
 		  });
 	}, [props.category, eventsFlag]);
 

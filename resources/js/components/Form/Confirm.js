@@ -69,7 +69,7 @@ export default function Confirm(props) {
       axios
       .post(`/api/${currentState.category}/${id}/edit`, data, { headers })
       .then(res => {
-        navigate(`/${currentState.category}`);
+        navigate(`/schedules/${currentState.schedule_id}`);
       })
       .catch(error => {
         console.log(error);
@@ -78,7 +78,7 @@ export default function Confirm(props) {
     axios
       .post(`/api/${currentState.category}`, data, { headers })
       .then(res => {
-        navigate(`/${currentState.category}`);
+        navigate(`/schedules/${currentState.schedule_id}`);
       })
       .catch(error => {
         console.log(error);

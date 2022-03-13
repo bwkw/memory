@@ -39,21 +39,21 @@ class Schedule extends Model
         return $this->where('user_id', $user_id)->get();
     }
     
-    public function getAllEvents($user_id)
+    public function getAllEvents($user_id, $schedule_id)
     {
-        $datings = $this->with('datings')->where('user_id', $user_id)->first()->datings;
+        $datings = $this->with('datings')->where('user_id', $user_id)->find($schedule_id)->datings;
         foreach($datings as $dating) {
             $dating->category = 'datings';
         };
-        $foods = $this->with('foods')->where('user_id', $user_id)->first()->foods;
+        $foods = $this->with('foods')->where('user_id', $user_id)->find($schedule_id)->foods;
         foreach($foods as $food) {
             $food->category = 'foods';
         };
-        $sceneries = $this->with('sceneries')->where('user_id', $user_id)->first()->sceneries;
+        $sceneries = $this->with('sceneries')->where('user_id', $user_id)->find($schedule_id)->sceneries;
         foreach($sceneries as $scenery) {
             $scenery->category = 'sceneries';
         };
-        $travels = $this->with('travels')->where('user_id', $user_id)->first()->travels;
+        $travels = $this->with('travels')->where('user_id', $user_id)->find($schedule_id)->travels;
         foreach($travels as $travel) {
             $travel->category = 'travels';
         };
