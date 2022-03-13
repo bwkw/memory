@@ -9,6 +9,11 @@ class Schedule extends Model
 {
     use HasFactory;
     
+    protected $casts = [
+        'start' => 'datetime: Y-m-d H:i',
+        'end' => 'datetime: Y-m-d H:i'
+    ];
+    
     public function datings()
     {
         return $this->hasMany(Dating::class);

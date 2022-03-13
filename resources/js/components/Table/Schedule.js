@@ -200,10 +200,7 @@ export default function EnhancedTable() {
     axios
       .get("/api/schedules")
       .then(response => {
-        const data = response.data;
-        data.map(e => ({ ...e, start: e.start.match(/\d{2}-\d{2}-\d{2}/)[0] }));
-        data.end = data.end.match(/\d{2}-\d{2}-\d{2}/)[0];
-  	  	setSchedules(data);
+  	  	setSchedules(response.data);
   	  })
   	  .catch(() => {
   	    console.log("通信に失敗しました");
