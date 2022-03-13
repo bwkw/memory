@@ -29,6 +29,7 @@ export default function HeaderBar() {
   const classes = useStyles();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
+  
   const logoutSubmit = (e) => {
     e.preventDefault();
 
@@ -40,7 +41,7 @@ export default function HeaderBar() {
         setUser({...user, id: ""});
         setUser({...user, name: ""});
         swal("ログアウトしました", res.data.message, "success");
-        navigate('/login');
+        navigate('/');
       } 
     });
   };
