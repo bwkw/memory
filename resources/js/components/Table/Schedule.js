@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import PropTypes from 'prop-types';
@@ -199,7 +200,10 @@ export default function EnhancedTable() {
     axios
       .get("/api/schedules")
       .then(response => {
-  	  	setSchedules(response.data);
+        const data = response.data;
+        data.map(e => ({ ...e, start: e.start.match(/\d{2}-\d{2}-\d{2}/)[0] }));
+        data.end = data.end.match(/\d{2}-\d{2}-\d{2}/)[0];
+  	  	setSchedules(data);
   	  })
   	  .catch(() => {
   	    console.log("通信に失敗しました");
@@ -311,7 +315,9 @@ export default function EnhancedTable() {
                           scope="schedule"
                           padding="none"
                         >
-                          {schedule.title}
+                          <Link to={`/schedules/${schedule.id}`}>
+                            {schedule.title}
+                          </Link>
                         </TableCell>
                         <TableCell align="right">{schedule.start}</TableCell>
                         <TableCell align="right">{schedule.end}</TableCell>

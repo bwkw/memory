@@ -97,7 +97,7 @@ export default function Category() {
   return (
     <Grid container rowSpacing={2} columnSpacing={4} justifyContent="center">
       {items.map((item) => (
-        <Grid item xs={8} md={5} key={item.id}>
+        <Grid item xs={10} md={5} key={item.id}>
           <ImageButton
             focusRipple
             style={{

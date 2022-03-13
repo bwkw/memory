@@ -18,15 +18,15 @@ export default function BaseDisplayCard(props) {
       spacing={4}
       justifyContent="center"
     >
-      {props.datas.map((data) => (
-        <Grid key={data.id} item xs={10} sm={7} md={5} lg={3}>
+      {props.events.map((event) => (
+        <Grid key={event.id} item xs={10} sm={7} md={5} lg={3}>
           <Card>
             <CardMedia
               component="img"
               height="200"
               width="300"
-              image={data.image_path}
-              alt={data.name}
+              image={event.image_path}
+              alt={event.name}
             />
             <CardContent>
               <Grid
@@ -39,14 +39,14 @@ export default function BaseDisplayCard(props) {
                 <Grid item xs={1} />
                 <Grid item xs={6}>
                   <Typography variant="h6" component="div">
-                    {data.name}
+                    {event.name}
                   </Typography>
                 </Grid>
                 <Grid item xs={1}/>
                 <Grid item xs={4}>
-                  <Typography style={{fontSize: 14}}>
-                    <Link to={`/shootings/${data.shooting_date}`} style={{ color: 'black' }}>
-                      {data.shooting_date}
+                  <Typography style={{fontSize: 12}}>
+                    <Link to={`/shootings/${event.shooting_date}`} style={{ color: 'black' }}>
+                      {event.shooting_date}
                     </Link>
                     に撮影
                   </Typography>

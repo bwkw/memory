@@ -3,13 +3,15 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import BaseDisplayCard from '@/components/Card/BaseDisplayCard';
+import Box from '@mui/material/Box';
 import Circular from '@/components/Loading/Circular';
 
 
 {/* ScheduleのShowメインコンポーネント */}
 export default function Show(props) {
   const { id } = useParams();
-	const [datas, setDatas] = useState([]);
+  const [schedule, setSchedule] = useState([]);
+	const [events, setEvents] = useState([]);
 	const [datasFlag, setDatasFlag] = useState(false);
   const [existDatasFlag, setExistDatasFlag] = useState(false);
 	
@@ -17,11 +19,15 @@ export default function Show(props) {
     axios
       .get('/api/schedules/' + id)
       .then(response => {
-        const data = response.data;
-        console.log(data);
+        const responseSchedule = response.data.schedule;
+        responseSchedule.start = responseSchedule.start.match(/\d{2}-\d{2}-\d{2}/)[0];
+        responseSchedule.end = responseSchedule.end.match(/\d{2}-\d{2}-\d{2}/)[0];
+        const responseEvents = response.data.events;
+        
+        setSchedule(responseSchedule);
         setDatasFlag(true);
-		  	if (data.length > 0) {
-		  	  setDatas(data);
+		  	if (responseEvents) {
+		  	  setEvents(responseEvents);
 		      setExistDatasFlag(true);
 		  	} else {
 		  		setExistDatasFlag(false);
@@ -35,8 +41,16 @@ export default function Show(props) {
 
   return(
     <div>
-    
-  		{ (existDatasFlag) && <BaseDisplayCard datas={datas} /> }
+  		{ (existDatasFlag) &&
+  		  <div>
+    		  <h1 style={{ textAlign: 'center' }}>{ schedule.title }</h1>
+          <p style={{ textAlign: 'center' }}>（{ schedule.start } - { schedule.end }）</p>
+          <Box
+            m={3}
+          />
+          <BaseDisplayCard events={events} /> 
+  		  </div>
+  		}
       { (!datasFlag) && <Circular /> }
     </div>
 	);

@@ -45,7 +45,8 @@ class ApiScheduleController extends Controller
         $events = $schedule->getAllEvents($request->user()->id);
         $scheduleEvents = collect([]);
         $scheduleEvents->put('schedule', $schedule);
-        return response()->json($events, 200);
+        $scheduleEvents->put('events', $events);
+        return response()->json($scheduleEvents, 200);
     }
 
     /**

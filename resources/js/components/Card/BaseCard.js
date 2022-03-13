@@ -76,7 +76,7 @@ export default function BaseCard(props) {
                 </Grid>
                 <Grid item xs={1} sm={1}/>
                 <Grid item xs={6} sm={5}>
-                  <Typography style={{fontSize: 14}}>
+                  <Typography style={{fontSize: 12}}>
                     <Link to={`/shootings/${data.shooting_date}`} style={{ color: 'black' }}>
                       {data.shooting_date}
                     </Link>
