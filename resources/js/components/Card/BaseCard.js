@@ -12,11 +12,11 @@ import Typography from '@mui/material/Typography';
 
 export default function BaseCard(props) {
   
-  const onDelete = (id) => {
+  const onDelete = (category, id) => {
     axios
-      .post(`/api/${props.category}/${id}/delete`)
+      .post(`/api/${category}/${id}/delete`)
       .then(response => {
-        props.setDatas(response.data);
+        props.setEventsFlag(false);
       })
       .catch(() => {
         console.log('通信に失敗しました');
@@ -33,15 +33,15 @@ export default function BaseCard(props) {
       spacing={4}
       justifyContent="center"
     >
-      {props.datas.map((data) => (
-        <Grid key={data.id} item xs={10} sm={7} md={5} lg={3}>
+      {props.events.map((event) => (
+        <Grid key={`${event.category}-${event.id}`} item xs={10} sm={7} md={5} lg={3}>
           <Card>
             <CardMedia
               component="img"
               height="200"
               width="300"
-              image={data.image_path}
-              alt={data.name}
+              image={event.image_path}
+              alt={event.name}
             />
             <CardContent>
               <Grid
@@ -54,7 +54,7 @@ export default function BaseCard(props) {
                 <Grid item xs={1} />
                 <Grid item xs={10}>
                   <Typography variant="h6" component="div">
-                    {data.name}
+                    {event.name}
                   </Typography>
                 </Grid>
               </Grid>
@@ -69,16 +69,22 @@ export default function BaseCard(props) {
                 <Grid item xs={1} sm={1} />
                 <Grid item xs={4} sm={3}>
                   <Typography style={{fontSize: 16}}>
-                    <Link to={`/scedules/${data.schedule.id}`} style={{ color: 'gray' }}>
-                      {data.schedule.title}
-                    </Link>
+                    {event.schedule ? (
+                      <Link to={`/schedules/${event.schedule.id}`} style={{ color: 'gray' }}>
+                        {event.schedule.title}
+                      </Link>
+                    ) : (
+                      <Link to={`/${event.category}`} style={{ color: 'gray' }}>
+                        {event.category}
+                      </Link>
+                    )}
                   </Typography>
                 </Grid>
                 <Grid item xs={1} sm={1}/>
                 <Grid item xs={6} sm={5}>
                   <Typography style={{fontSize: 12}}>
-                    <Link to={`/shootings/${data.shooting_date}`} style={{ color: 'black' }}>
-                      {data.shooting_date}
+                    <Link to={`/shootings/${event.shooting_date}`} style={{ color: 'black' }}>
+                      {event.shooting_date}
                     </Link>
                     に撮影
                   </Typography>
@@ -95,7 +101,7 @@ export default function BaseCard(props) {
               >
                 <Grid item xs={1} />
                 <Grid item xs={1}>
-                  <Link to={`/${props.category}/${data.id}`}>
+                  <Link to={`/${event.category}/${event.id}`}>
                     Details
                   </Link>
                 </Grid>
@@ -105,7 +111,7 @@ export default function BaseCard(props) {
                     variant="contained" 
                     color="primary" 
                     style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
-                    onClick={() => onDelete(data.id)}
+                    onClick={() => onDelete(event.category, event.id)}
                   >
                     Delete
                   </Button>
@@ -117,7 +123,7 @@ export default function BaseCard(props) {
                     color="secondary" 
                     style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
                     component={Link}
-                    to={`/${props.category}/${data.id}/edit`}
+                    to={`/${event.category}/${event.id}/edit`}
                   >
                     Edit
                   </Button>

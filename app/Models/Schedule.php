@@ -42,9 +42,22 @@ class Schedule extends Model
     public function getAllEvents($user_id)
     {
         $datings = $this->with('datings')->where('user_id', $user_id)->first()->datings;
+        foreach($datings as $dating) {
+            $dating->category = 'datings';
+        };
         $foods = $this->with('foods')->where('user_id', $user_id)->first()->foods;
+        foreach($foods as $food) {
+            $food->category = 'foods';
+        };
         $sceneries = $this->with('sceneries')->where('user_id', $user_id)->first()->sceneries;
+        foreach($sceneries as $scenery) {
+            $scenery->category = 'sceneries';
+        };
         $travels = $this->with('travels')->where('user_id', $user_id)->first()->travels;
+        foreach($travels as $travel) {
+            $travel->category = 'travels';
+        };
+        
         $events = $datings->concat($foods)->concat($sceneries)->concat($travels)->sortBy([ ['shooting_date', 'desc'] ]);
         
         return $events;

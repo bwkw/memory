@@ -10,27 +10,30 @@ import Stack from '@mui/material/Stack';
 
 {/* 各CategoryのIndexメインコンポーネント */}
 export default function Index(props) {
-  const [datas, setDatas] = useState([]);
-  const [datasFlag, setDatasFlag] = useState(false);
-  const [existDatasFlag, setExistDatasFlag] = useState(false);
+  const [events, setEvents] = useState([]);
+  const [eventsFlag, setEventsFlag] = useState(false);
+  const [existEventsFlag, setExistEventsFlag] = useState(false);
   
 	useEffect(() => {
 		axios
 			.get(`/api/${props.category}`)
 		  .then(response => {
-		  	const data = response.data;
-		  	setDatasFlag(true);
-		  	if (data.length > 0) {
-		  	  setDatas(data);
-		      setExistDatasFlag(true);
+		  	const responseDatas = response.data;
+		  	responseDatas.map((data) => (
+		  		data.category = props.category
+		  	));
+		  	setEventsFlag(true);
+		  	if (responseDatas.length > 0) {
+		  	  setEvents(responseDatas);
+		      setExistEventsFlag(true);
 		  	} else {
-		  		setExistDatasFlag(false);
+		  		setExistEventsFlag(false);
 		  	}
 		  })
 		  .catch(() => {
-		    console.log("通信に失敗しました");
+		    console.log("通信に失敗した");
 		  });
-	}, [props.category, existDatasFlag]);
+	}, [props.category, eventsFlag]);
 
 
   return(
@@ -42,8 +45,8 @@ export default function Index(props) {
       
       <br />
       
-      { (existDatasFlag) && <BaseCard category={props.category} datas={datas} setDatas={setDatas} /> }
-      { (!datasFlag) && <Circular /> }
+      { (existEventsFlag) && <BaseCard events={events} setEventsFlag={setEventsFlag} /> }
+      { (!eventsFlag) && <Circular /> }
     </div>
   );
 }

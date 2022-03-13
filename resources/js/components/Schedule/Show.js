@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import BaseDisplayCard from '@/components/Card/BaseDisplayCard';
+import BaseCard from '@/components/Card/BaseCard';
 import Box from '@mui/material/Box';
 import Circular from '@/components/Loading/Circular';
 
@@ -12,8 +12,8 @@ export default function Show(props) {
   const { id } = useParams();
   const [schedule, setSchedule] = useState([]);
 	const [events, setEvents] = useState([]);
-	const [datasFlag, setDatasFlag] = useState(false);
-  const [existDatasFlag, setExistDatasFlag] = useState(false);
+	const [eventsFlag, setEventsFlag] = useState(false);
+  const [existEventsFlag, setExistEventsFlag] = useState(false);
 	
   useEffect(() => {
     axios
@@ -25,33 +25,33 @@ export default function Show(props) {
         const responseEvents = response.data.events;
         
         setSchedule(responseSchedule);
-        setDatasFlag(true);
+        setEventsFlag(true);
 		  	if (responseEvents) {
 		  	  setEvents(responseEvents);
-		      setExistDatasFlag(true);
+		      setExistEventsFlag(true);
 		  	} else {
-		  		setExistDatasFlag(false);
+		  		setExistEventsFlag(false);
 		  	}
       })
       .catch(() => {
         console.log('通信に失敗しました');
       });
-	 },[existDatasFlag]);
+	 },[eventsFlag]);
 
 
   return(
     <div>
-  		{ (existDatasFlag) &&
+  		{ (existEventsFlag) &&
   		  <div>
     		  <h1 style={{ textAlign: 'center' }}>{ schedule.title }</h1>
           <p style={{ textAlign: 'center' }}>（{ schedule.start } - { schedule.end }）</p>
           <Box
             m={3}
           />
-          <BaseDisplayCard events={events} /> 
+          <BaseCard events={events} setEventsFlag={setEventsFlag} /> 
   		  </div>
   		}
-      { (!datasFlag) && <Circular /> }
+      { (!eventsFlag) && <Circular /> }
     </div>
 	);
 }
