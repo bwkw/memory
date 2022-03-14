@@ -62,7 +62,7 @@ export default function HeaderBar() {
           component="span"
           sx={{ flexGrow: 1 }}
           onClick={handleMenu}
-           color="inherit"
+          color="inherit"
         >
           { user["name"] ? <span className="text-white">{user["name"]}</span> : <span className="text-white">{localStorage.getItem('auth_name')}</span> }
         </Button>

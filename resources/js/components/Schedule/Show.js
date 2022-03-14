@@ -20,10 +20,7 @@ export default function Show(props) {
       .get('/api/schedules/' + id)
       .then(response => {
         const responseSchedule = response.data.schedule;
-        responseSchedule.start = responseSchedule.start.match(/\d{2}-\d{2}-\d{2}/)[0];
-        responseSchedule.end = responseSchedule.end.match(/\d{2}-\d{2}-\d{2}/)[0];
         const responseEvents = response.data.events;
-        
         setSchedule(responseSchedule);
         setEventsFlag(true);
 		  	if (responseEvents) {

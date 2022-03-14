@@ -1,11 +1,15 @@
 import { useForm, Controller } from "react-hook-form";
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import {createStyles, makeStyles} from '@material-ui/core/styles';
+import DeleteTwoTone from '@mui/icons-material/DeleteTwoTone';
+import SaveAltTwoTone from '@mui/icons-material/SaveAltTwoTone';
 import Stack from '@mui/material/Stack';
 import TextField from "@material-ui/core/TextField";
+import ZoomOutTwoTone from '@mui/icons-material/ZoomOutTwoTone';
 
 
 const useStyles = makeStyles(() =>
@@ -72,32 +76,29 @@ export default function Form(props) {
       case "create":
         return(
           <Button
-            variant="contained"
-            color="secondary"
-            style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
             type="submit"
           >
-            Save
+            <SaveAltTwoTone />
           </Button>
         );
       case "edit":
         return(
           <Stack spacing={2} direction="row">
-            <Button 
-              variant="contained" 
-              color="primary" 
-              style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
-              onClick={() => deleteEvent()}
+            <Button
+              component={ Link }
+              to={`/schedules/${props.id}`}
             >
-              Delete
+              <ZoomOutTwoTone />
             </Button>
             <Button
-              variant="contained"
-              color="secondary"
-              style={{ fontFamily:['Moon Dance', 'Noto Serif JP'] }}
+              onClick={() => deleteEvent()}
+            >
+              <DeleteTwoTone/>
+            </Button>
+            <Button
               type="submit"
             >
-              Save
+              <SaveAltTwoTone />
             </Button>
           </Stack>
         );
