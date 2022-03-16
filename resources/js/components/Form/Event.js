@@ -3,7 +3,7 @@ import { useForm, Controller } from "react-hook-form";
 
 import Box from '@mui/material/Box';
 import { Button } from "@material-ui/core";
-import GoogleGeocode from "react-geocode";
+import Geocode from '@/components/GoogleMap/Geocode';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Stack from '@mui/material/Stack';
@@ -21,19 +21,6 @@ export default function Event(props) {
     },
     mode: "onChange",
   });
-  
-  const Geocode = (data) => {
-    GoogleGeocode.setApiKey(process.env.MIX_GOOGLE_MAP_API_KEY);
-    GoogleGeocode.fromAddress(data.name).then(
-      response => {
-        const location = response.results[0].geometry.location;
-        const resLat = location.lat;
-        const resLng = location.lng;
-        data["lat"] = resLat;
-        data["lng"] = resLng;
-      },
-    );
-  };
   
   const onSubmit = (data) => {
     props.handleNext();
