@@ -39,7 +39,6 @@ export default function Index(props) {
   return(
   	<div>
   		<Stack direction="row" spacing={3} justifyContent="center">
-  			<Back url="/" />
       	<Create url={`/${props.category}/create`} />
       </Stack>
       
