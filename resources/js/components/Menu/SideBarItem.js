@@ -4,6 +4,7 @@ import AirplanemodeActiveTwoToneIcon from '@mui/icons-material/AirplanemodeActiv
 import CalendarTodayTwoToneIcon from '@mui/icons-material/CalendarTodayTwoTone';
 import Divider from '@mui/material/Divider';
 import EscalatorWarningTwoToneIcon from '@mui/icons-material/EscalatorWarningTwoTone';
+import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -16,6 +17,9 @@ import Typography from '@mui/material/Typography';
 
 export default function SideBarItem() {
   
+  const home = 
+    {"icon":<HomeTwoToneIcon />, "name": "Home", "url": "/"};
+    
   const calendar = 
     {"icon":<CalendarTodayTwoToneIcon />, "name": "Calendar", "url": "/calendar"};
   
@@ -31,6 +35,15 @@ export default function SideBarItem() {
   
   return (
     <List>
+      <Link to={ home.url } key={ home.name } className="text-body">
+        <ListItem>
+          <ListItemIcon>
+            { home.icon }
+          </ListItemIcon>
+          <ListItemText primary={<Typography style={{ color: 'black' }}>{ home.name }</Typography>} />
+        </ListItem>
+      </Link>
+      <Divider />
       <Link to={ calendar.url } key={ calendar.name } className="text-body">
         <ListItem>
           <ListItemIcon>
