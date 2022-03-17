@@ -47,8 +47,10 @@ class ApiFoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function show(Food $food)
+    public function show(Request $request, $food_id)
     {
+        $food = new Food();
+        $food = $food->getOneFood($request->user()->id, $food_id);
         return response()->json($food, 200);
     }
 

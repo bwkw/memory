@@ -7,8 +7,8 @@ export default function Map(props) {
   const name = props.name;
 
   const containerStyle = {
-    height: "400px",
-    width: "400px",
+    height: "100%",
+    width: "100%",
   };
 
   const center = {

@@ -47,8 +47,10 @@ class ApiSceneryController extends Controller
      * @param  \App\Models\Scenery  $scenery
      * @return \Illuminate\Http\Response
      */
-    public function show(Scenery $scenery)
+    public function show(Request $request, $scenery_id)
     {
+        $scenery = new Scenery();
+        $scenery = $scenery->getOneScenery($request->user()->id, $scenery_id);
         return response()->json($scenery, 200);
     }
 

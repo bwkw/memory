@@ -1,7 +1,6 @@
 import { useEffect, useState }  from 'react';
 import axios from 'axios';
 
-import Back from '@/components/Button/Back';
 import BaseCard from '@/components/Card/BaseCard';
 import Circular from '@/components/Loading/Circular';
 import Create from '@/components/Button/Create';

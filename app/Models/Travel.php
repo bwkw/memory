@@ -25,4 +25,8 @@ class Travel extends Model
     {
         return $this->with('schedule')->where('user_id', $user_id)->get();
     }
+    public function getOneTravel($user_id, $travel_id)
+    {
+        return $this->find($travel_id)->with('schedule')->where('user_id', $user_id)->get();
+    }
 }

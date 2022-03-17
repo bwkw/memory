@@ -47,11 +47,12 @@ class ApiDatingController extends Controller
      * @param  \App\Models\Dating  $dating
      * @return \Illuminate\Http\Response
      */
-    public function show(Dating $dating)
+    public function show(Request $request, $dating_id)
     {
+        $dating = new Dating();
+        $dating = $dating->getOneDating($request->user()->id, $dating_id);
         return response()->json($dating, 200);
     }
-
     /**
      * Update the specified resource in storage.
      *

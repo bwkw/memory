@@ -48,8 +48,10 @@ class ApiTravelController extends Controller
      * @param  \App\Models\Travel  $travel
      * @return \Illuminate\Http\Response
      */
-    public function show(Travel $travel)
+    public function show(Request $request, $travel_id)
     {
+        $travel = new Travel();
+        $travel = $travel->getOneTravel($request->user()->id, $travel_id);
         return response()->json($travel, 200);
     }
 

@@ -25,4 +25,9 @@ class Dating extends Model
     {
         return $this->with('schedule')->where('user_id', $user_id)->get();
     }
+    
+    public function getOneDating($user_id, $dating_id)
+    {
+        return $this->find($dating_id)->with('schedule')->where('user_id', $user_id)->get();
+    }
 }

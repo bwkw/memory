@@ -25,4 +25,9 @@ class Food extends Model
     {
         return $this->with('schedule')->where('user_id', $user_id)->get();
     }
+    
+    public function getOneFood($user_id, $food_id)
+    {
+        return $this->find($food_id)->with('schedule')->where('user_id', $user_id)->get();
+    }
 }

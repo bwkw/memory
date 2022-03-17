@@ -25,4 +25,9 @@ class Scenery extends Model
     {
         return $this->with('schedule')->where('user_id', $user_id)->get();
     }
+    
+    public function getOneScenery($user_id, $scenery_id)
+    {
+        return $this->find($scenery_id)->with('schedule')->where('user_id', $user_id)->get();
+    }
 }
