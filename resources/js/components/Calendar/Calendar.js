@@ -99,10 +99,10 @@ export default function Calendar() {
       <Grid
         item
         container
-        columns={{ xs: 12 }}
+        columns={{ xs: 40 }}
         justifyContent="center"
       >
-        <Grid item xs={10}>
+        <Grid item xs={39} sm={35}>
           <FullCalendar
             locale="ja"
             plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin, listPlugin]}
