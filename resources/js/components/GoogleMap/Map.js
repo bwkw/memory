@@ -2,8 +2,8 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 
 export default function Map(props) {
-  const lat = props.lat;
-  const lng = props.lng;
+  const lat = +props.lat;
+  const lng = +props.lng;
   const name = props.name;
 
   const containerStyle = {
