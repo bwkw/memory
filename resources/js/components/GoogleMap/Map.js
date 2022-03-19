@@ -16,18 +16,11 @@ export default function Map(props) {
     lng: lng,
   };
   
-  const markerLabel = {
-    color: "black",
-    fontFamily: "sans-serif",
-    fontSize: "17px",
-    fontWeight: "500",
-    text: name,
-  };
+  
     
   return (
     <LoadScript googleMapsApiKey={ process.env.MIX_GOOGLE_MAP_API_KEY }>
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17}>
-        <Marker position={center} label={markerLabel} />
       </GoogleMap>
     </LoadScript>
   );
