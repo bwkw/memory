@@ -15,7 +15,7 @@ export default function Edit(props) {
     axios
       .get(`/api/${props.category}/` + id)
       .then(response => {
-        setData(response.data);
+        setData(response.data[0]);
         setDatasFlag(true);
       })
       .catch(() => {
